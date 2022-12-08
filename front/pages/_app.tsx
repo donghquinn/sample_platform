@@ -3,6 +3,7 @@ import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import NavBar from "../component/navbar";
+import { RecoilRoot } from "recoil";
 // import Footer from "../component/footer";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
@@ -19,8 +20,10 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         ></script>
       </Head>
       <div>
-        <NavBar></NavBar>
-        <Component {...pageProps}></Component>
+        <RecoilRoot>
+          <NavBar></NavBar>
+          <Component {...pageProps}></Component>
+        </RecoilRoot>
         {/* <Footer></Footer> */}
       </div>
       {/* <div>
