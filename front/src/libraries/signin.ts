@@ -1,8 +1,10 @@
 import axios, { AxiosError } from "axios";
 import { DefaultResponse } from "../type/jwt.type";
 
-export async function signIn(url: string, email: string, password: string) {
+export async function signIn(email: string, password: string) {
   try {
+    const url = process.env.ADMIN_URL;
+
     const bodyData = {
       email,
       password,
@@ -13,7 +15,8 @@ export async function signIn(url: string, email: string, password: string) {
     });
 
     if (response.data.resCode !== 200) {
-      return alert("Sign In Failed");
+      alert("Sign In Failed");
+      return;
     }
 
     const { token, clientid } = response.data.dataRes;

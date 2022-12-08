@@ -9,3 +9,13 @@ export const passwordManage = atom({
   key: "passwordManage",
   default: "",
 });
+
+export const tokenManage = atom({
+  key: "tokenManage",
+  default: "",
+});
+
+export const clientidManage = atom({
+  key: "clientidManage",
+  default: "",
+});

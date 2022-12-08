@@ -4,11 +4,19 @@ import Logo from "../pulbic/img/logo.png";
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
-import { emailManage, passwordManage } from "../src/libraries/recoil.lib";
+import {
+  clientidManage,
+  emailManage,
+  passwordManage,
+  tokenManage,
+} from "../src/libraries/recoil.lib";
+import { signIn } from "../src/libraries/signin";
 
 function Login() {
   const [email, setEmail] = useRecoilState(emailManage);
   const [password, setPassword] = useRecoilState(passwordManage);
+  const [token, setToken] = useRecoilState(tokenManage);
+  const [clientid, setClientid] = useRecoilState(clientidManage);
 
   // 패스워드, 이메일 입력
   const onEmailChange = (e) => setEmail(e.target.value);
@@ -61,7 +69,7 @@ function Login() {
 
             <div className="flex items-center justify-between">
               <div className="flex items-center">
-                <input
+                {/* <input
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
@@ -72,7 +80,7 @@ function Login() {
                   className="ml-2 block text-sm text-gray-900"
                 >
                   Remember me
-                </label>
+                </label> */}
               </div>
 
               <div className="text-sm">
@@ -84,14 +92,14 @@ function Login() {
                 </Link>
               </div>
 
-              <div className="text-sm">
+              {/* <div className="text-sm">
                 <a
                   href="#"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot your password?
                 </a>
-              </div>
+              </div> */}
             </div>
 
             <div>
@@ -99,10 +107,19 @@ function Login() {
                 type="submit"
                 className="group relative flex w-full justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 style={{ backgroundColor: "#df5f3c" }}
+                onClick={async () => {
+                  // 로그인 요청 전송
+                  const { token, clientid } = await signIn(email, password);
+
+                  setToken(token);
+                  setClientid(clientid);
+
+                  return <Link href="/count"></Link>;
+                }}
               >
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                   <LockClosedIcon
-                    className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                    className="h-5 w-5 white group-hover:text-indigo-400"
                     aria-hidden="true"
                   />
                 </span>
