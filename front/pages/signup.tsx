@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 function SignUp() {
+  const [email, setEmail] = useState("");
   return (
     <div className="flex flex-col content-center">
       <div className="flex flex-row justify-center">
