@@ -4,7 +4,7 @@
     "outDir": "./dist",
     "typeRoots": [
       "./node_modules/@types",
-      "./src/types",
+      "./src/types/**/*",
     ],
     "lib": ["ES2021"],
     "allowJs": false,
