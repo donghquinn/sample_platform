@@ -3,10 +3,12 @@ import Image from "next/image";
 import Logo from "../pulbic/img/logo.png";
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
+import { useRecoilState } from "recoil";
+import { emailManage, passwordManage } from "../src/libraries/recoil.lib";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useRecoilState(emailManage);
+  const [password, setPassword] = useRecoilState(passwordManage);
 
   // 패스워드, 이메일 입력
   const onEmailChange = (e) => setEmail(e.target.value);

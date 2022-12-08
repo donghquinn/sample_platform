@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { createHash, randomInt } from "crypto";
+import { DefaultResponse } from "../type/jwt.type";
 
 // JWT 생성
 export async function signUp(url: string, email: string, password: string) {
@@ -18,13 +19,16 @@ export async function signUp(url: string, email: string, password: string) {
     };
 
     // 요청
-    const result = await axios.post(`${url}/register`, {
+    const result = await axios.post<DefaultResponse>(`${url}/register`, {
       body: { bodyData },
     });
 
     if (result.data.resCode !== 200) {
       return alert("회원가입 실패!");
     }
+
+    const { dataRes } = result.data;
+    return dataRes;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new AxiosError("[SignUp] Axios Error");
