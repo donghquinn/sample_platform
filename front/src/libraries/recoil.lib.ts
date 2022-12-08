@@ -19,3 +19,8 @@ export const clientidManage = atom({
   key: "clientidManage",
   default: "",
 });
+
+export const countManage = atom({
+  key: "countManage",
+  default: "",
+});

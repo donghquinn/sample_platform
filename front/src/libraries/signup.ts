@@ -1,10 +1,13 @@
 import axios, { AxiosError } from "axios";
 import { createHash, randomInt } from "crypto";
 import { DefaultResponse } from "../type/jwt.type";
+import { SignInRes } from "../type/sign.type";
 
 // JWT 생성
-export async function signUp(url: string, email: string, password: string) {
+export async function signUp(email: string, password: string) {
   try {
+    const url = process.env.ADMIN_URL;
+
     // 패스워드와 합쳐서 인코딩할 값과 합칠 값
     const passwordBase = String(randomInt(8));
 

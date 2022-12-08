@@ -1,28 +1,26 @@
 import axios, { AxiosError } from "axios";
+import { CountRes } from "../type/count.type";
 import { DefaultResponse } from "../type/jwt.type";
-import { SignInRes } from "../type/sign.type";
 
-export async function signIn(email: string, password: string) {
+export async function getCount(token: string, clientid: string) {
   try {
     const url = process.env.ADMIN_URL;
 
-    const bodyData = {
-      email,
-      password,
-    };
-
-    const response = await axios.post<SignInRes>(`${url}/signin`, {
-      body: { bodyData },
+    const response = await axios.get<CountRes>(`${url}/count`, {
+      headers: {
+        token,
+        clientid,
+      },
     });
 
     if (response.data.resCode !== 200) {
-      alert("Sign In Failed");
-      return;
+      const returnData = "Get Count Failed";
+
+      return returnData;
     }
 
-    const { token, clientid } = response.data.dataRes;
-
-    return { token, clientid };
+    const { count } = response.data.dataRes;
+    return count;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new AxiosError("[SignUp] Axios Error");
