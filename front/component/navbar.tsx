@@ -1,10 +1,8 @@
-import { Fragment } from "react";
-import React from "react";
-import Image from "next/image";
-import profile from "../pulbic/img/favicon.png";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
+import Image from "next/image";
+import { Fragment } from "react";
+import profile from "../pulbic/img/favicon.png";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
