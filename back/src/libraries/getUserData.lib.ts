@@ -1,12 +1,15 @@
 import { MysqlError } from 'error';
 import { selectUserTokenAndClientKey } from 'queries/users/signin.sql';
+import { ClientInfo } from 'types/users/client.type';
 import { Mysql } from './database';
 
-export async function getUserInfo(clientid: string) {
+export async function getUserInfo(email: string, token: string) {
   try {
-    const userQueryResult = await Mysql.query(selectUserTokenAndClientKey, [clientid]);
+    const userQueryResult = await Mysql.query<ClientInfo>(selectUserTokenAndClientKey, [email, token]);
 
-    return;
+    const { clientid, password } = userQueryResult;
+
+    return { clientid, password };
   } catch (error) {
     if (error instanceof MysqlError) {
       throw new MysqlError('[USER_INFO]', 'MYSQL ERROR', error.message);
