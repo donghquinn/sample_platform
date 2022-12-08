@@ -1,0 +1,185 @@
+body {
+  background-color: rgb(238, 238, 238);
+  width: 100%;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 500px;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 auto;
+  background-color: #fff;
+  position: relative;
+}
+
+header {
+  position: fixed;
+  height: 60px;
+  width: 100%;
+  max-width: 500px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  background-color: #fff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+}
+
+.hamburger {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.4rem;
+}
+
+.header_logo {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 4px);
+  transform: translate(-50%, -50%);
+  width: 80px;
+}
+
+.header_logo a {
+  display: block;
+  height: 100%;
+}
+
+.my_info {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.my_info a {
+  display: block;
+  height: 100%;
+  font-size: 2rem;
+}
+
+main {
+  padding: 60px 20px 0;
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+footer .copyright {
+  /* font-weight: 400; */
+  color: #999;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
+footer ul li {
+  margin-right: 20px;
+}
+
+footer ul li:last-child {
+  margin-right: 0;
+}
+
+footer ul li a {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+nav {
+  position: fixed;
+  left: 50%;
+  top: -100vh;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 500px;
+  height: 100vh;
+  background-color: #fff;
+  transition: all 0.5s;
+  padding: 20px;
+  z-index: 2;
+}
+
+nav.active {
+  top: 60px;
+}
+
+nav .user_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+nav .user_info .img_wrap {
+  width: 120px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+nav .user_info .img_wrap img {
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+}
+
+nav .user_info .user_name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+nav .user_info .user_type {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+nav .user_info .noneuser_type {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+nav .menu_list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 50px;
+}
+
+nav .menu_list li {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+}
+
+nav .menu_list li a {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+nav .logout {
+  display: block;
+  font-size: 1.5rem;
+  margin: 40px 0;
+  text-align: center;
+  color: #999;
+}

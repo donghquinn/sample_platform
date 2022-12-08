@@ -1,0 +1,13 @@
+node_modules
+env
+db
+.DS_STORE
+.env*
+.next
+.vscode
+logs
+coverage-ts
+dist
+.dist
+src/utils/food-url.utils.ts
+./src/utils/food-url.utils

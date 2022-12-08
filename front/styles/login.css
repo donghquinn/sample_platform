@@ -1,0 +1,14 @@
+main {
+  padding-top: 100px;
+}
+
+.title {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.button_wrap {
+  margin: 100px auto;
+  width: 100%;
+  max-width: 400px;
+}

@@ -1,0 +1,70 @@
+main {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.title_desc {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.small_desc {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.start_btn {
+  margin: 20px 0;
+}
+
+.start_btn a {
+  display: block;
+  font-size: 1.6rem;
+}
+
+.survey_desc {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.review_sample {
+  margin-top: 50px;
+}
+
+.review_sample .title {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.review_sample ul {
+  margin-top: 20px;
+  padding: 0 30px;
+}
+
+.review_sample ul li {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.review_sample ul li .img_wrap {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  min-height: 60px;
+  margin-right: 10px;
+}
+
+.review_sample ul li .name {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-right: 10px;
+  min-width: 30px;
+}
+
+.review_sample ul li p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-align: left;
+}

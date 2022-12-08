@@ -1,0 +1,62 @@
+main {
+  padding-top: 80px;
+}
+
+.title {
+  text-align: center;
+}
+
+.feeling_desc {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.feeling_list {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 60px;
+  overflow-y: auto;
+}
+
+.feeling_list li {
+  width: 33.3333%;
+}
+
+.feeling_list li input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.feeling_list li input[type="radio"] + label {
+  display: block;
+  width: 100%;
+  padding: 12%;
+  opacity: 0.5;
+}
+
+.feeling_list li input[type="radio"]:checked + label {
+  border: 4px solid #df5f3c;
+  border-radius: 0.5rem;
+  opacity: 1;
+}
+
+.next_btn {
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 10px 20px;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.next_btn a {
+  display: block;
+  font-size: 1.2rem;
+}

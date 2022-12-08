@@ -1,0 +1,46 @@
+.bg-color {
+  background-color: #df5f3c;
+  border: #df5f3c;
+  color: #fff;
+}
+
+.text-color {
+  color: #df5f3c;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #df5f3c;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.4s;
+}
+
+.btn:hover {
+  background-color: #df5f3c;
+  color: #fff;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.mainbtn {
+  padding: 0.5rem 1rem;
+  color: #fff;
+  background-color: #df5f3c;
+  border: 1px solid #df5f3c;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.4s;
+}
+
+.mainbtn:hover {
+  background-color: #fff;
+  color: #df5f3c;
+}

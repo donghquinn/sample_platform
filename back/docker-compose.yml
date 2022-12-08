@@ -1,0 +1,20 @@
+---
+version: '3.7'
+services:
+        backend:
+                build:
+                        context: .
+                        dockerfile: ./Dockerfile
+                container_name: backend
+                restart: unless-stopped
+                volumes:
+                        - ./taste-log:/home/taste/src/logs
+                expose:
+                        - ${APP_PORT}
+                env_file:
+                        - .env
+                networks:
+                        - proxy
+networks:
+        proxy:
+                external: true

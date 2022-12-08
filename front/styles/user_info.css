@@ -1,0 +1,183 @@
+main {
+  padding-top: 80px;
+}
+
+.title {
+  text-align: center;
+}
+
+.my_type {
+  margin-top: 40px;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  padding-top: 20px;
+}
+
+.type_chart {
+  margin-top: 20px;
+}
+
+.type_box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.type_box:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.type_box .type_code {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.1rem;
+  width: 25%;
+}
+
+.type_box .type_code h4 {
+  text-align: center;
+  line-height: 1.2;
+}
+
+.type_box .type_left {
+  margin-right: auto;
+}
+
+.type_box .type_right {
+  margin-left: auto;
+}
+
+.type_box .type_code strong {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: middle;
+  color: #fff;
+  background-color: #df5f3c;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 8px;
+}
+
+.type_box .type_percent {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.type_box .type_percent .base_line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 100%;
+  background-color: #ddd;
+}
+
+.type_box .type_percent .progress_box {
+  width: 50%;
+  height: 70%;
+  text-align: center;
+}
+
+.type_box .type_percent .progress_box .progress {
+  background-color: #df5f3c;
+  opacity: 0.5;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.type_box .type_percent .progress_box.active .progress {
+  opacity: 1;
+}
+
+.type_box .type_percent .left_progress .progress {
+  margin-left: auto;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.type_box .type_percent .right_progress .progress {
+  margin-right: auto;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.friends_type {
+  margin-top: 40px;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  padding-top: 20px;
+  position: relative;
+}
+
+.coming {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, .9)
+}
+
+.coming h3 {
+  font-size: 3rem;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+
+
+.friends_type_list {
+  margin-top: 20px;
+}
+
+.friends_type_list li {
+  display: flex;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.friends_type_list li:first-child>div {
+  font-weight: 600;
+  background-color: #eee;
+}
+
+.friends_type_list li>div {
+  width: 33.3333%;
+  padding: 0.75rem 0.5rem;
+  border: 1px solid #ddd;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.friends_type_list li>div:last-child {
+  border-right: 0;
+}
+
+@media all and (max-width: 400px) {
+  html {
+    font-size: 10px;
+  }
+}

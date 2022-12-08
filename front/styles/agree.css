@@ -1,0 +1,21 @@
+.agree_box {
+  padding: 25px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.prev_btn {
+  height: 5vh;
+  border-bottom: 1px solid #ddd;
+}
+
+.prev_btn a::before {
+  content: "\1438";
+  position: absolute;
+  left: 36px;
+  top: 30px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+}

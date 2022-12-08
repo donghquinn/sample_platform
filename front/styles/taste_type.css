@@ -1,0 +1,52 @@
+main {
+  padding-top: 100px;
+}
+
+.title {
+  text-align: center;
+}
+
+.percent {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.taste_type_list {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.taste_type_list>dl {
+  width: 25%;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 20px 0;
+}
+
+.taste_type_list>dl:nth-child(4n) {
+  border-right: 0;
+}
+
+.taste_type_list>dl>dt {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  background-color: #fff;
+  position: relative;
+}
+
+.taste_type_list>dl>dt img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
+
+.taste_type_list>dl>dd {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.3rem;
+}
