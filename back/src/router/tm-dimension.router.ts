@@ -1,6 +1,7 @@
+import { normalFoodList } from 'controllers/normalfood-list.lib';
 import { DefaultState, Next } from 'koa';
 import Router from 'koa-router';
-import { normalFoodList } from 'libraries/normalfood-list.lib';
+
 import { DefaultCtx } from 'types/request.types';
 
 const normalFoodRouter = new Router<DefaultState, DefaultCtx>();

@@ -8,6 +8,7 @@ import session from 'koa-session';
 import bodyParser from 'koa-bodyparser';
 import { Server } from 'http';
 import { routerV1 } from 'router';
+import { routerV2 } from 'router/users';
 import { Logger } from './utils';
 
 export class KoaServer {
@@ -37,6 +38,8 @@ export class KoaServer {
     // this.koa.use(headerAuth);
     this.koa.use(routerV1.routes());
     this.koa.use(routerV1.allowedMethods());
+    this.koa.use(routerV2.routes());
+    this.koa.use(routerV2.allowedMethods());
   }
 
   // koa 서버 실행

@@ -1,5 +1,5 @@
 import { AuthError, MysqlError } from 'error';
-import { AuthByKeyCtx } from 'types/request.types';
+import { DefaultCtx } from 'types/request.types';
 import { Logger } from 'utils';
 import { setErrorResponse, setResponse } from 'utils/response.utils';
 import { defaultRequestValidator } from 'validator/default-request.validator';
@@ -7,7 +7,7 @@ import { emotionalOtherTypeCal } from '../libraries/calculate';
 import { getClientKey } from '../libraries/common';
 
 // 입맛 외 요소 라우터 첫 단계
-export async function otherResult(ctx: AuthByKeyCtx) {
+export async function otherResult(ctx: DefaultCtx) {
   try {
     const headerKey = ctx.request.headers?.key;
 

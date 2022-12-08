@@ -1,6 +1,6 @@
+import { firstResult } from 'controllers/result.lib';
 import { DefaultState, Next } from 'koa';
 import Router from 'koa-router';
-import { firstResult } from 'controllers/result.lib';
 // import { headerAuth } from 'middlewares/header-auth';
 import { DefaultCtx } from 'types/request.types';
 
