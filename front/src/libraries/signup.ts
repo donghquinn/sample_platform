@@ -4,7 +4,12 @@ import { DefaultResponse } from "../type/jwt.type";
 import { SignInRes } from "../type/sign.type";
 
 // JWT 생성
-export async function signUp(email: string, password: string) {
+export async function signUp(
+  email: string,
+  password: string,
+  gender: string,
+  dateOfBirth: string
+) {
   try {
     const url = process.env.ADMIN_URL;
 
@@ -19,6 +24,9 @@ export async function signUp(email: string, password: string) {
     const bodyData = {
       email,
       password: endcodedPassword,
+      gender,
+      dateOfBirth,
+      isAdmin: 1,
     };
 
     // 요청
