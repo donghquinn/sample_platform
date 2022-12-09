@@ -7,13 +7,13 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [gender, setGender] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [isAdmin, setAdmin] = useState("");
+  // const [isAdmin, setAdmin] = useState("");
 
   const onPasswordChange = (e) => setPassword(e.target.value);
   const onEmailChange = (e) => setEmail(e.target.value);
   const onGenderChange = (e) => setGender(e.target.value);
   const onBirthChange = (e) => setDateOfBirth(e.target.value);
-  const onAdminChnage = (e) => setAdmin(e.target.value);
+  // const onAdminChnage = (e) => setAdmin(e.target.value);
 
   return (
     <div className="flex flex-col content-center">
@@ -27,6 +27,7 @@ function SignUp() {
               <input
                 type="text"
                 placeholder="email"
+                required
                 className="input input-bordered"
                 onChange={onEmailChange}
               />
@@ -36,8 +37,9 @@ function SignUp() {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 placeholder="password"
+                required
                 className="input input-bordered"
                 onChange={onPasswordChange}
               />
@@ -54,6 +56,7 @@ function SignUp() {
               <input
                 type="text"
                 placeholder="gender"
+                required
                 className="input input-bordered"
                 onChange={onGenderChange}
               />
@@ -64,7 +67,7 @@ function SignUp() {
               </label>
               <input
                 type="text"
-                placeholder="birth"
+                placeholder="YY/MM/DD"
                 className="input input-bordered"
                 onChange={onBirthChange}
               />
@@ -81,42 +84,44 @@ function SignUp() {
               />
             </div> */}
             <div className="form-control mt-6">
-              <button
-                className="btn btn-primary"
-                onClick={async () => {
-                  try {
-                    await signUp(email, password, gender, dateOfBirth);
+              <Link href="/">
+                <button
+                  className="btn btn-primary"
+                  onClick={async () => {
+                    try {
+                      await signUp(email, password, gender, dateOfBirth);
 
-                    return (
-                      <div>
-                        <div className="flex flex-col content-center">
-                          <div className="flex justify-center">
-                            <h1>회원가입 완료</h1>
-                            <Link href="/">
-                              <button>확인</button>
-                            </Link>
+                      return (
+                        <div>
+                          <div className="flex flex-col content-center">
+                            <div className="flex justify-center">
+                              <h1>회원가입 완료</h1>
+                              <Link href="/">
+                                <button>확인</button>
+                              </Link>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    );
-                  } catch (error) {
-                    return (
-                      <div>
-                        <div className="flex flex-col content-center">
-                          <div className="flex justify-center">
-                            <h1>SignUp Request Error</h1>
-                            <Link href="/signup">
-                              <button>다시 요청</button>
-                            </Link>
+                      );
+                    } catch (error) {
+                      return (
+                        <div>
+                          <div className="flex flex-col content-center">
+                            <div className="flex justify-center">
+                              <h1>SignUp Request Error</h1>
+                              <Link href="/signup">
+                                <button>다시 요청</button>
+                              </Link>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    );
-                  }
-                }}
-              >
-                Login
-              </button>
+                      );
+                    }
+                  }}
+                >
+                  회원가입하기
+                </button>
+              </Link>
             </div>
           </div>
         </div>

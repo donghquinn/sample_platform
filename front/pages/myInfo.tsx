@@ -1,4 +1,5 @@
 import React from "react";
+import LogoutBtn from "../component/logout-btn";
 
 export default function MyInfo() {
   return (
@@ -476,6 +477,7 @@ export default function MyInfo() {
             </form>
           </div>
         </div>
+        <LogoutBtn></LogoutBtn>
       </div>
     </>
   );
