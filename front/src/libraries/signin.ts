@@ -15,6 +15,10 @@ export async function signIn(email: string, password: string) {
       body: { bodyData },
     });
 
+    if (!response.data.dataRes.token || !response.data.dataRes.clientid) {
+      return alert("일치하는 회원정보를 찾지 못했습니다.");
+    }
+
     if (response.data.resCode !== 200) {
       alert("Sign In Failed");
       return;
