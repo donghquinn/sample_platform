@@ -3,7 +3,7 @@ import { SignInRes } from "../type/sign.type";
 
 export async function signIn(email: string, password: string) {
   try {
-    const url = process.env.ADMIN_URL;
+    const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
     const bodyData = {
       email,

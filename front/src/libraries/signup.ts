@@ -11,7 +11,7 @@ export async function signUp(
   dateOfBirth: string
 ) {
   try {
-    const url = process.env.ADMIN_URL;
+    const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
     // 패스워드와 합쳐서 인코딩할 값과 합칠 값
     const passwordBase = String(randomInt(8));
