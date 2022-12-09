@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import Link from "next/link";
 import React, { useState } from "react";
 import { signUp } from "../src/libraries/signup";
@@ -16,9 +17,13 @@ function SignUp() {
   // const onAdminChnage = (e) => setAdmin(e.target.value);
 
   const signUpFunc = async () => {
-    await signUp(email, password, gender, dateOfBirth);
+    try {
+      await signUp(email, password, gender, dateOfBirth);
 
-    alert("회원가입 요청 완료");
+      alert("회원가입 요청 완료");
+    } catch (error) {
+      throw new AxiosError("[SIGNUP]", JSON.stringify(error));
+    }
   };
 
   return (

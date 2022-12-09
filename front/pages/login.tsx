@@ -11,6 +11,7 @@ import {
   tokenManage,
 } from "../src/libraries/recoil.lib";
 import { signIn } from "../src/libraries/signin";
+import { AxiosError } from "axios";
 
 function Login() {
   const [email, setEmail] = useRecoilState(emailManage);
@@ -24,9 +25,35 @@ function Login() {
   const onPasswordChange = (e) => setPassword(e.target.value);
 
   const signInFunc = async () => {
-    await signIn(email, password);
+    try {
+      const { token: receivedToken, clientid: receivedClientId } = await signIn(
+        email,
+        password
+      );
 
-    alert("로그인 되었습니다.");
+      if (!receivedClientId || !receivedToken) {
+        alert("일치하는 회원 정보가 없습니다.");
+
+        return (
+          <div>
+            <div className="flex flex-col content-center">
+              <div className="flex justify-center">
+                <Link href="/">
+                  <button>확인</button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      setToken(receivedToken);
+      setClientid(receivedClientId);
+
+      alert("로그인 되었습니다.");
+    } catch (error) {
+      throw new AxiosError("[Login]", JSON.stringify(error));
+    }
   };
 
   return (

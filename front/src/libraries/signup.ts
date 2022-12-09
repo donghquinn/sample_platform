@@ -38,9 +38,9 @@ export async function signUp(
       return alert("회원가입 실패!");
     }
 
-    const { dataRes } = result.data;
+    const { dataRes, resCode } = result.data;
 
-    return dataRes;
+    return { dataRes, resCode };
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new AxiosError("[SignUp] Axios Error");
