@@ -6,6 +6,7 @@ export async function getCount(token: string, clientid: string) {
   try {
     const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
+    // TODO header content-type: x-www-form-urlencoded로 바꿔야할지 지켜보자.
     const header = {
       "Content-Type": "application/json",
       Authorization: token,
