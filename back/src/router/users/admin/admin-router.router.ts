@@ -6,7 +6,7 @@ import { DefaultCtx } from 'types/request.types';
 import authByJwt from 'middlewares/auth-jwt';
 import { searchTotalUsers } from 'controllers/users/admin/search.lib';
 
-const adminRouter = new Router<DefaultState, DefaultCtx>({ prefix: '/admin' });
+const adminRouter = new Router<DefaultState, DefaultCtx>();
 
 adminRouter.post('/register', async (ctx, next: Next) => {
   await adminController(ctx);
