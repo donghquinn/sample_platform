@@ -15,6 +15,12 @@ function SignUp() {
   const onBirthChange = (e) => setDateOfBirth(e.target.value);
   // const onAdminChnage = (e) => setAdmin(e.target.value);
 
+  const signUpFunc = async () => {
+    await signUp(email, password, gender, dateOfBirth);
+
+    alert("회원가입 요청 완료");
+  };
+
   return (
     <div className="flex flex-col content-center">
       <div className="flex flex-row justify-center">
@@ -85,40 +91,7 @@ function SignUp() {
             </div> */}
             <div className="form-control mt-6">
               <Link href="/">
-                <button
-                  className="btn btn-primary"
-                  onClick={async () => {
-                    try {
-                      await signUp(email, password, gender, dateOfBirth);
-
-                      return (
-                        <div>
-                          <div className="flex flex-col content-center">
-                            <div className="flex justify-center">
-                              <h1>회원가입 완료</h1>
-                              <Link href="/">
-                                <button>확인</button>
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    } catch (error) {
-                      return (
-                        <div>
-                          <div className="flex flex-col content-center">
-                            <div className="flex justify-center">
-                              <h1>SignUp Request Error</h1>
-                              <Link href="/signup">
-                                <button>다시 요청</button>
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    }
-                  }}
-                >
+                <button className="btn btn-primary" onClick={signUpFunc}>
                   회원가입하기
                 </button>
               </Link>

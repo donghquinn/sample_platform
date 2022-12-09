@@ -23,6 +23,12 @@ function Login() {
   const onEmailChange = (e) => setEmail(e.target.value);
   const onPasswordChange = (e) => setPassword(e.target.value);
 
+  const signInFunc = async () => {
+    await signIn(email, password);
+
+    alert("로그인 되었습니다.");
+  };
+
   return (
     <>
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -108,15 +114,7 @@ function Login() {
                 type="submit"
                 className="group relative flex w-full justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 style={{ backgroundColor: "#df5f3c" }}
-                onClick={async () => {
-                  // 로그인 요청 전송
-                  const { token, clientid } = await signIn(email, password);
-
-                  setToken(token);
-                  setClientid(clientid);
-
-                  return <Link href="/count"></Link>;
-                }}
+                onClick={signInFunc}
               >
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                   <LockClosedIcon
@@ -124,7 +122,7 @@ function Login() {
                     aria-hidden="true"
                   />
                 </span>
-                Sign in
+                로그인
               </button>
             </div>
           </form>

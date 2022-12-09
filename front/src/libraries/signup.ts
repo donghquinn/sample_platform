@@ -39,6 +39,7 @@ export async function signUp(
     }
 
     const { dataRes } = result.data;
+
     return dataRes;
   } catch (error) {
     if (axios.isAxiosError(error)) {
