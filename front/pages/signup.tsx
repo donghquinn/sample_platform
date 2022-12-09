@@ -2,6 +2,11 @@ import React, { useState } from "react";
 
 function SignUp() {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onPasswordChange = (e) => setPassword(e.target.value);
+  const onEmailChange = (e) => setEmail(e.target.value);
+
   return (
     <div className="flex flex-col content-center">
       <div className="flex flex-row justify-center">
@@ -15,6 +20,7 @@ function SignUp() {
                 type="text"
                 placeholder="email"
                 className="input input-bordered"
+                onChange={onEmailChange}
               />
             </div>
             <div className="form-control">
@@ -25,6 +31,7 @@ function SignUp() {
                 type="text"
                 placeholder="password"
                 className="input input-bordered"
+                onChange={onPasswordChange}
               />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
