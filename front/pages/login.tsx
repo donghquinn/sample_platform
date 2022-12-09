@@ -40,8 +40,9 @@ function Login() {
       setToken(receivedToken);
       setClientid(receivedClientId);
 
-      // alert("로그인 되었습니다.");
+      alert("로그인 되었습니다.");
     } catch (error) {
+      alert("다시 시도해 주세요");
       throw new AxiosError("[Login]", JSON.stringify(error));
     }
   };
