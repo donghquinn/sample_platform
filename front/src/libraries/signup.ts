@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { createHash, randomInt } from "crypto";
+import qs from "qs";
 import { DefaultResponse } from "../type/jwt.type";
-import { SignInRes } from "../type/sign.type";
 
 // JWT 생성
 export async function signUp(
@@ -21,17 +21,22 @@ export async function signUp(
       .update(password + passwordBase)
       .digest("hex");
 
-    const bodyData = {
+    const header = {
+      "Content-Type": "application/x-www-form-urlencoded",
+    };
+
+    const bodyData = qs.stringify({
       email,
       password: endcodedPassword,
       gender,
       birth: dateOfBirth,
       isAdmin: 1,
-    };
+    });
 
     // 요청
     const result = await axios.post<DefaultResponse>(`${url}/admin/register`, {
       data: bodyData,
+      headers: header,
     });
 
     if (result.data.resCode !== 200) {

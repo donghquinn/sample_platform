@@ -1,14 +1,15 @@
 import axios, { AxiosError } from "axios";
+import qs from "qs";
 import { SignInRes } from "../type/sign.type";
 
 export async function signIn(email: string, password: string) {
   try {
     const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
-    const bodyData = {
+    const bodyData = qs.stringify({
       email,
       password,
-    };
+    });
 
     // const header = {
     //   "Content-Type": "application/json",

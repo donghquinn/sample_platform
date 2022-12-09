@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import { createToken } from 'libraries/createToken.lib';
 import { createUser } from 'libraries/users/create-user.lib';
 import { DefaultCtx } from 'types/request.types';
+import { Logger } from 'utils';
 import { setErrorResponse, setResponse } from 'utils/response.utils';
 import { adminRequestValidator } from 'validator/admin.validator';
 
@@ -11,6 +12,8 @@ export async function adminController(ctx: DefaultCtx) {
     const { email, password, isAdmin, gender, birth } = await adminRequestValidator.validateAsync(ctx.request.body);
 
     const { uuid, hash, clientKey, secretKey } = createToken();
+
+    Logger.info('[REGISTER] Got Request ClientId: %o', clientKey);
 
     const payload = { uuid, hash, clientKey };
 
