@@ -31,7 +31,7 @@ export async function signUp(
 
     // 요청
     const result = await axios.post<DefaultResponse>(`${url}/admin/register`, {
-      body: { bodyData },
+      data: bodyData,
     });
 
     if (result.data.resCode !== 200) {

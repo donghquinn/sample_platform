@@ -10,8 +10,13 @@ export async function signIn(email: string, password: string) {
       password,
     };
 
+    // const header = {
+    //   "Content-Type": "application/json",
+    //   // Authorization: authToken,
+    // };
+
     const response = await axios.post<SignInRes>(`${url}/admin/signin`, {
-      body: { bodyData },
+      data: bodyData,
     });
 
     if (!response.data.dataRes.token || !response.data.dataRes.clientid) {

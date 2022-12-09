@@ -4,7 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import NavBar from "../component/navbar";
 import { RecoilRoot } from "recoil";
-import Script from "next/script";
+// import Script from "next/script";
 // import Footer from "../component/footer";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
@@ -15,11 +15,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       <Head>
         <title>테이스트널리티</title>
       </Head>
-      <Script
+      {/* <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1431674278951978"
         crossOrigin="anonymous"
-      ></Script>
+      ></Script> */}
       <div>
         <RecoilRoot>
           <NavBar></NavBar>

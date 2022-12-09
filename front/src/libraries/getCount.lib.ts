@@ -6,11 +6,14 @@ export async function getCount(token: string, clientid: string) {
   try {
     const url = process.env.ADMIN_URL;
 
+    const header = {
+      "Content-Type": "application/json",
+      Authorization: token,
+      clientid,
+    };
+
     const response = await axios.get<CountRes>(`${url}/count`, {
-      headers: {
-        token,
-        clientid,
-      },
+      headers: header,
     });
 
     if (response.data.resCode !== 200) {
