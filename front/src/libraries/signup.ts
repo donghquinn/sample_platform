@@ -25,7 +25,7 @@ export async function signUp(
       email,
       password: endcodedPassword,
       gender,
-      dateOfBirth,
+      birth: dateOfBirth,
       isAdmin: 1,
     };
 
