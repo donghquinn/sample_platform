@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { clientidManage, tokenManage } from "../src/libraries/recoil.lib";
 
-function LogOut() {
+function Logout() {
   const router = useRouter();
   const [token, setToken] = useRecoilState(tokenManage);
   const [clientid, setClientid] = useRecoilState(clientidManage);
@@ -31,4 +31,4 @@ function LogOut() {
   );
 }
 
-export default LogOut;
+export default Logout;

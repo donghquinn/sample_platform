@@ -22,7 +22,7 @@ function SignUp() {
     try {
       await signUp(email, password, gender, dateOfBirth);
 
-      alert("회원가입 요청 완료");
+      // alert("회원가입 요청 완료");
     } catch (error) {
       throw new AxiosError("[SIGNUP]", JSON.stringify(error));
     }
@@ -80,7 +80,7 @@ function SignUp() {
               </label>
               <input
                 type="text"
-                placeholder="YY/MM/DD"
+                placeholder="YYMMDD"
                 className="input input-bordered"
                 onChange={onBirthChange}
               />
