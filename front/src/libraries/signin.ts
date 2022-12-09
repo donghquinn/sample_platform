@@ -22,6 +22,7 @@ export async function signIn(email: string, password: string) {
 
     if (response.data.resCode !== 200) {
       console.log("Sign In Failed");
+
       return;
     }
 

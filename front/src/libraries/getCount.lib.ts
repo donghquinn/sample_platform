@@ -14,12 +14,17 @@ export async function getCount(token: string, clientid: string) {
     });
 
     if (response.data.resCode !== 200) {
-      const returnData = "Get Count Failed";
+      const returnData = `Get Count Failed: ${response.data.resCode}`;
+
+      console.log(returnData);
 
       return returnData;
     }
 
     const { count } = response.data.dataRes;
+
+    console.log(count);
+
     return count;
   } catch (error) {
     if (axios.isAxiosError(error)) {
