@@ -10,7 +10,7 @@ export async function getCount(token: string, clientid: string) {
     const header = {
       "Content-Type": "application/json",
       Authorization: token,
-      clientid,
+      // clientid,
     };
 
     const response = await axios.get<CountRes>(`${url}/count`, {
