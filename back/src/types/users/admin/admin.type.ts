@@ -9,3 +9,8 @@ export interface AdminRequest {
 export interface UserCounts {
   count: string;
 }
+
+export interface AdminSignin {
+  email: string;
+  password: string;
+}

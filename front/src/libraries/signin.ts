@@ -11,7 +11,7 @@ export async function signIn(email: string, password: string) {
       password,
     };
 
-    const response = await axios.post<SignInRes>(`${url}/signin`, {
+    const response = await axios.post<SignInRes>(`${url}/admin/signin`, {
       body: { bodyData },
     });
 

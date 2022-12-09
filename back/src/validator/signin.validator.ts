@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { AdminSignin } from 'types/users/signin.type';
+import { AdminSignin } from 'types/users/admin/admin.type';
 
 export const signinValidator = Joi.object<AdminSignin>({
   email: Joi.string().required(),

@@ -30,7 +30,7 @@ export async function signUp(
     };
 
     // 요청
-    const result = await axios.post<DefaultResponse>(`${url}/register`, {
+    const result = await axios.post<DefaultResponse>(`${url}/admin/register`, {
       body: { bodyData },
     });
 
