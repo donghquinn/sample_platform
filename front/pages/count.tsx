@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { getCount } from "../src/libraries/getCount.lib";
@@ -22,6 +23,21 @@ function Count() {
   useEffect(() => {
     counting();
   });
+
+  if (!token || clientid) {
+    return (
+      <div>
+        <div className="flex flex-col content-center">
+          <div className="flex justify-center">
+            <h1>잘못된 접속 요청입니다.</h1>
+            <Link href="/">
+              <button>로그인하러가기</button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
