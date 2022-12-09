@@ -1,5 +1,4 @@
-import axios, { AxiosError } from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { getCount } from "../src/libraries/getCount.lib";
 import {
@@ -10,28 +9,29 @@ import {
 
 function Count() {
   const [count, setCount] = useRecoilState(countManage);
+
   const [token, setToken] = useRecoilState(tokenManage);
   const [clientid, setClientid] = useRecoilState(clientidManage);
 
+  const counting = async () => {
+    const count = await getCount(token, clientid);
+
+    setCount(count);
+  };
+
   useEffect(() => {
-    async function count() {
-      try {
-        const count = await getCount(token, clientid);
-
-        setCount(count);
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          throw new AxiosError(JSON.stringify(error));
-        }
-      }
-
-      // return count;
-    }
-
-    count();
+    counting();
   });
 
-  return <div>총 회원 수: {count} 명</div>;
+  return (
+    <div>
+      <div className="flex flex-col content-center">
+        <div className="flex justify-center">
+          <h1>총 유저 수: {count}</h1>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Count;
