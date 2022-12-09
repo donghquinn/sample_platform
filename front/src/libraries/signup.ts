@@ -13,6 +13,8 @@ export async function signUp(
   try {
     const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
+    console.log(`${url}/admin/register`);
+
     // 패스워드와 합쳐서 인코딩할 값과 합칠 값
     const passwordBase = String(randomInt(8));
 
@@ -33,6 +35,8 @@ export async function signUp(
       isAdmin: 1,
     });
 
+    console.log(`[Register] ${bodyData}`);
+
     // 요청
     const result = await axios.post<DefaultResponse>(`${url}/admin/register`, {
       data: bodyData,
@@ -41,6 +45,7 @@ export async function signUp(
 
     if (result.data.resCode !== 200) {
       alert("회원가입 실패!");
+
       return;
     }
 

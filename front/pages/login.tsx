@@ -62,8 +62,8 @@ function Login() {
           </div>
           <form
             className="mt-8 space-y-6"
-            action="singInFunc"
-            method="POST"
+            // action="singInFunc"
+            // method="POST"
             onSubmit={signInFunc}
           >
             <input type="hidden" name="remember" defaultValue="true" />

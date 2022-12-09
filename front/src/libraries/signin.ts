@@ -6,10 +6,14 @@ export async function signIn(email: string, password: string) {
   try {
     const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
+    console.log(`${url}/admin/signin`);
+
     const bodyData = qs.stringify({
       email,
       password,
     });
+
+    console.log("[SIGNIN] bodyData: %o", bodyData);
 
     const header = {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -34,6 +38,8 @@ export async function signIn(email: string, password: string) {
     }
 
     const { token, clientid } = response.data.dataRes;
+
+    console.log("Found clientID: $o", clientid);
 
     return { token, clientid };
   } catch (error) {
