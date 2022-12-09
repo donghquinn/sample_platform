@@ -16,6 +16,7 @@ import { useRouter } from "next/router";
 
 function Login() {
   const router = useRouter();
+
   const [email, setEmail] = useRecoilState(emailManage);
   const [password, setPassword] = useRecoilState(passwordManage);
 
@@ -26,8 +27,8 @@ function Login() {
   const onEmailChange = (e) => setEmail(e.target.value);
   const onPasswordChange = (e) => setPassword(e.target.value);
 
-  const signInFunc = async (e) => {
-    e.preventDefault();
+  const signInFunc = async (event) => {
+    event.preventDefault();
 
     try {
       const { token: receivedToken, clientid: receivedClientId } = await signIn(

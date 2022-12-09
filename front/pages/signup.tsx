@@ -18,7 +18,9 @@ function SignUp() {
   const onBirthChange = (e) => setDateOfBirth(e.target.value);
   // const onAdminChnage = (e) => setAdmin(e.target.value);
 
-  const signUpFunc = async () => {
+  const signUpFunc = async (e) => {
+    e.preventDefault();
+
     try {
       await signUp(email, password, gender, dateOfBirth);
 
