@@ -4,7 +4,7 @@ import { DefaultResponse } from "../type/jwt.type";
 
 export async function getCount(token: string, clientid: string) {
   try {
-    const url = process.env.ADMIN_URL;
+    const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
     const header = {
       "Content-Type": "application/json",
