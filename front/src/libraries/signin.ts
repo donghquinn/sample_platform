@@ -16,7 +16,9 @@ export async function signIn(email: string, password: string) {
     });
 
     if (!response.data.dataRes.token || !response.data.dataRes.clientid) {
-      return alert("일치하는 회원정보를 찾지 못했습니다.");
+      alert("일치하는 회원정보를 찾지 못했습니다.");
+
+      return;
     }
 
     if (response.data.resCode !== 200) {

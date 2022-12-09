@@ -95,11 +95,9 @@ function SignUp() {
               />
             </div> */}
             <div className="form-control mt-6">
-              <Link href="/">
-                <button className="btn btn-primary" onClick={signUpFunc}>
-                  회원가입하기
-                </button>
-              </Link>
+              <button className="btn btn-primary" onClick={signUpFunc}>
+                회원가입하기
+              </button>
             </div>
           </div>
         </div>
