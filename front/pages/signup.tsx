@@ -92,8 +92,8 @@ function SignUp() {
                   onChange={onBirthChange}
                 />
               </div>
-            </form>
-            {/* <div className="form-control">
+
+              {/* <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
@@ -104,16 +104,17 @@ function SignUp() {
                 onChange={onEmailChange}
               />
             </div> */}
-            <div className="form-control mt-6">
-              <button
-                className="btn btn-primary"
-                onClick={() => {
-                  router.push("/");
-                }}
-              >
-                회원가입하기
-              </button>
-            </div>
+              <div className="form-control mt-6">
+                <button
+                  className="btn btn-primary"
+                  onClick={() => {
+                    router.push("/");
+                  }}
+                >
+                  회원가입하기
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
