@@ -31,13 +31,13 @@ export async function signIn(email: string, password: string) {
     return { token, clientid };
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      throw new AxiosError("[SignUp] Axios Error");
+      throw new AxiosError("[LOGIN] Axios Error", JSON.stringify(error));
     }
 
     if (error instanceof Error) {
-      throw new Error("[SignUp]", error);
+      throw new Error("[LOGIN]", error);
     }
 
-    throw new Error("[SIGNUP]", error);
+    throw new Error("[LOGIN]", error);
   }
 }

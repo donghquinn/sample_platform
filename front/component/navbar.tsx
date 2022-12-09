@@ -1,11 +1,10 @@
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import { Fragment } from "react";
-import profile from "../pulbic/img/profile02.png";
-import mainLogo from "../pulbic/favicon.ico";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { Fragment } from "react";
+import mainLogo from "../pulbic/favicon.ico";
+import profile from "../pulbic/img/profile02.png";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
@@ -19,7 +18,7 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
-  const router = useRouter();
+  // const router = useRouter();
   return (
     <Disclosure
       as="nav"
@@ -42,26 +41,26 @@ export default function NavBar() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  {/* <Link href="/count"> */}
-                  <Image
-                    className="block h-8 w-auto lg:hidden"
-                    src={mainLogo}
-                    alt="Your Company"
-                    onClick={() => {
-                      router.push("/count");
-                    }}
-                  ></Image>
-                  {/* </Link> */}
-                  {/* <Link href="/count"> */}
-                  <Image
-                    className="hidden h-8 w-auto lg:block"
-                    src={mainLogo}
-                    alt="Your Company"
-                    onClick={() => {
-                      router.push("/count");
-                    }}
-                  ></Image>
-                  {/* </Link> */}
+                  <Link href="/count">
+                    <Image
+                      className="block h-8 w-auto lg:hidden"
+                      src={mainLogo}
+                      alt="Your Company"
+                      // onClick={() => {
+                      //   router.push("/count");
+                      // }}
+                    ></Image>
+                  </Link>
+                  <Link href="/count">
+                    <Image
+                      className="hidden h-8 w-auto lg:block"
+                      src={mainLogo}
+                      alt="Your Company"
+                      // onClick={() => {
+                      //   router.push("/count");
+                      // }}
+                    ></Image>
+                  </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
