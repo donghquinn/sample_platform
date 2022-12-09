@@ -12,7 +12,7 @@ export async function signIn(email: string, password: string) {
     });
 
     const header = {
-      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
       // Authorization: authToken,
     };
 
