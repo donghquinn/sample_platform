@@ -12,8 +12,10 @@ import {
 } from "../src/libraries/recoil.lib";
 import { signIn } from "../src/libraries/signin";
 import { AxiosError } from "axios";
+import { useRouter } from "next/router";
 
 function Login() {
+  const router = useRouter();
   const [email, setEmail] = useRecoilState(emailManage);
   const [password, setPassword] = useRecoilState(passwordManage);
 
@@ -31,21 +33,9 @@ function Login() {
         password
       );
 
-      if (!receivedClientId || !receivedToken) {
-        alert("일치하는 회원 정보가 없습니다.");
-
-        return (
-          <div>
-            <div className="flex flex-col content-center">
-              <div className="flex justify-center">
-                <Link href="/">
-                  <button>확인</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        );
-      }
+      // if (!receivedClientId || !receivedToken) {
+      //   alert("일치하는 회원 정보가 없습니다.");
+      // }
 
       setToken(receivedToken);
       setClientid(receivedClientId);
@@ -141,7 +131,10 @@ function Login() {
                 type="submit"
                 className="group relative flex w-full justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 style={{ backgroundColor: "#df5f3c" }}
-                onClick={signInFunc}
+                onClick={() => {
+                  signInFunc;
+                  router.push("/count");
+                }}
               >
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                   <LockClosedIcon

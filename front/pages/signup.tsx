@@ -1,9 +1,11 @@
 import { AxiosError } from "axios";
-import Link from "next/link";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import { signUp } from "../src/libraries/signup";
 
 function SignUp() {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [gender, setGender] = useState("");
@@ -95,7 +97,13 @@ function SignUp() {
               />
             </div> */}
             <div className="form-control mt-6">
-              <button className="btn btn-primary" onClick={signUpFunc}>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  signUpFunc;
+                  router.push("/");
+                }}
+              >
                 회원가입하기
               </button>
             </div>

@@ -15,13 +15,13 @@ export async function signIn(email: string, password: string) {
     });
 
     if (!response.data.dataRes.token || !response.data.dataRes.clientid) {
-      alert("일치하는 회원정보를 찾지 못했습니다.");
+      console.log("일치하는 회원정보를 찾지 못했습니다.");
 
       return;
     }
 
     if (response.data.resCode !== 200) {
-      alert("Sign In Failed");
+      console.log("Sign In Failed");
       return;
     }
 
