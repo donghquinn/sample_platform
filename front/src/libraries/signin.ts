@@ -1,5 +1,4 @@
 import axios, { AxiosError } from "axios";
-import { DefaultResponse } from "../type/jwt.type";
 import { SignInRes } from "../type/sign.type";
 
 export async function signIn(email: string, password: string) {
