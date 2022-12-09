@@ -26,7 +26,9 @@ function Login() {
   const onEmailChange = (e) => setEmail(e.target.value);
   const onPasswordChange = (e) => setPassword(e.target.value);
 
-  const signInFunc = async () => {
+  const signInFunc = async (e) => {
+    e.preventDefault();
+
     try {
       const { token: receivedToken, clientid: receivedClientId } = await signIn(
         email,
@@ -57,7 +59,12 @@ function Login() {
               Sign in to your account
             </h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form
+            className="mt-8 space-y-6"
+            action="singInFunc"
+            method="POST"
+            onSubmit={signInFunc}
+          >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>

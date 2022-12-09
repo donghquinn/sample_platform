@@ -34,7 +34,12 @@ function SignUp() {
       <div className="flex flex-row justify-center">
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
-            <form onSubmit={signUpFunc}>
+            <form
+              className="mt-8 space-y-6"
+              action="singInFunc"
+              method="POST"
+              onSubmit={signUpFunc}
+            >
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
