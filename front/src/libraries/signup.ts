@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { createHash, randomInt } from "crypto";
 import qs from "qs";
+import Login from "../../pages/login";
 import { DefaultResponse } from "../type/jwt.type";
 
 // JWT 생성
@@ -13,15 +14,19 @@ export async function signUp(
   try {
     const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
-    console.log(`${url}/admin/register`);
+    // console.log(`${url}/admin/register`);
 
     // 패스워드와 합쳐서 인코딩할 값과 합칠 값
     const passwordBase = String(randomInt(8));
+
+    console.log("passwordBase: %o", passwordBase);
 
     // 암호화
     const endcodedPassword = createHash("sha256")
       .update(password + passwordBase)
       .digest("hex");
+
+    console.log("encoded Password: %o", endcodedPassword);
 
     const header = {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -35,7 +40,9 @@ export async function signUp(
       isAdmin: 1,
     });
 
-    console.log(`[Register] ${bodyData}`);
+    console.log("bodyData: %o", bodyData);
+
+    // console.log(`[Register] ${bodyData}`);
 
     // 요청
     const result = await axios.post<DefaultResponse>(`${url}/admin/register`, {
@@ -43,11 +50,13 @@ export async function signUp(
       headers: header,
     });
 
-    if (result.data.resCode !== 200) {
-      alert("회원가입 실패!");
+    // if (result.data.resCode !== 200) {
+    //   alert("회원가입 실패!");
 
-      return;
-    }
+    //   return;
+    // }
+
+    console.log("response Code: %o", result.data.resCode);
 
     const { dataRes, resCode } = result.data;
 

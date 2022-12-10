@@ -19,9 +19,9 @@ function SignUp() {
   // const onAdminChnage = (e) => setAdmin(e.target.value);
 
   const signUpFunc = async (e) => {
-    e.preventDefault();
-
     try {
+      e.preventDefault();
+
       await signUp(email, password, gender, dateOfBirth);
 
       alert("회원가입 요청 완료");
