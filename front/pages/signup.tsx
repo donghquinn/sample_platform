@@ -27,6 +27,7 @@ function SignUp() {
       alert("회원가입 요청 완료");
     } catch (error) {
       alert("회원가입 요청에 문제가 있습니다.");
+
       throw new AxiosError("[SIGNUP]", JSON.stringify(error));
     }
   };

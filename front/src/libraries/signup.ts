@@ -17,13 +17,13 @@ export async function signUp(
     // console.log(`${url}/admin/register`);
 
     // 패스워드와 합쳐서 인코딩할 값과 합칠 값
-    const passwordBase = String(randomInt(8));
+    const passwordBase = randomInt(8);
 
     console.log("passwordBase: %o", passwordBase);
 
     // 암호화
     const endcodedPassword = createHash("sha256")
-      .update(password + passwordBase)
+      .update(password + `${passwordBase}`)
       .digest("hex");
 
     console.log("encoded Password: %o", endcodedPassword);
