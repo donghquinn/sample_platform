@@ -1,4 +1,4 @@
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { signUp } from "../src/libraries/signup";
@@ -18,17 +18,27 @@ function SignUp() {
   const onBirthChange = (e) => setDateOfBirth(e.target.value);
   // const onAdminChnage = (e) => setAdmin(e.target.value);
 
-  const signUpFunc = async (e) => {
+  const signUpFunc = async () => {
     try {
-      e.preventDefault();
+      console.log("sign up start ");
 
       await signUp(email, password, gender, dateOfBirth);
+
+      console.log("sign up failed");
 
       alert("회원가입 요청 완료");
     } catch (error) {
       alert("회원가입 요청에 문제가 있습니다.");
 
-      throw new AxiosError("[SIGNUP]", JSON.stringify(error));
+      if (axios.isAxiosError(error)) {
+        throw new AxiosError("[SIGNUP]", JSON.stringify(error));
+      }
+
+      if (error instanceof Error) {
+        throw new Error("[SIGNUP]", error);
+      }
+
+      throw new Error("[SIGNUP]", error);
     }
   };
 

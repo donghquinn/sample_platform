@@ -67,9 +67,9 @@ export async function signUp(
     }
 
     if (error instanceof Error) {
-      throw new Error("[SignUp]", error);
+      throw new Error("[SignUp] Not Axios Error", error);
     }
 
-    throw new Error("[SIGNUP]", error);
+    throw new Error("[SIGNUP] Unhandable Error", error);
   }
 }
