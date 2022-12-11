@@ -41,7 +41,7 @@ function SignUp() {
 
     // 암호화
     const endcodedPassword = createHash("sha256")
-      .update(password + `${passwordBase}`)
+      .update(password)
       .digest("hex");
 
     const header = {

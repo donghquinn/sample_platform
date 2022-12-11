@@ -1,3 +1,4 @@
+import { createHash } from 'crypto';
 import { Context } from 'koa';
 import { Mysql } from 'libraries/database';
 import { selectToken } from 'queries/users/client.sql';
@@ -32,7 +33,9 @@ export async function signinController(ctx: Context) {
 
     Logger.info('[USER_SIGNIN] Start Search User info...');
 
-    const result = await Mysql.query<ClientInfo>(selectToken, [parsedEmail, parsedPassword]);
+    const encodedPassword = createHash('sha256').update(parsedPassword).digest('hex');
+
+    const result = await Mysql.query<ClientInfo>(selectToken, [parsedEmail, encodedPassword]);
 
     Logger.info('[USER_SIGNIN] Found User Info');
 
