@@ -35,13 +35,17 @@ export async function signinController(ctx: Context) {
 
     const encodedPassword = createHash('sha256').update(parsedPassword).digest('hex');
 
+    Logger.info('[USER_SIGNIN] encoded Password: %o', encodedPassword);
+
     const result = await Mysql.query<ClientInfo>(selectToken, [parsedEmail, encodedPassword]);
 
-    Logger.info('[USER_SIGNIN] Found User Info');
+    Logger.info('[USER_SIGNIN] queried data: %o', { email: result.email, password: result.password });
 
     if (!result) {
       setErrorResponse(ctx, 400, 'Login Failed');
     }
+
+    Logger.info('[USER_SIGNIN] Found User Info');
 
     Logger.info('[USER_SIGNIN] Login Success');
 
