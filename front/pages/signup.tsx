@@ -60,13 +60,13 @@ function SignUp() {
     //   dateOfBirth,
     // });
 
-    const bodyData = qs.stringify({
+    const bodyData = {
       email,
       password: endcodedPassword,
       gender,
       birth: dateOfBirth,
       isAdmin: 1,
-    });
+    };
 
     // console.log(`[Register] ${bodyData}`);
 

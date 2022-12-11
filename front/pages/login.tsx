@@ -42,10 +42,10 @@ function Login() {
     // const { email: validatedEmail, password: validatedPassword } =
     //   await validateSingin.validateAsync({ email, password });
 
-    const bodyData = qs.stringify({
+    const bodyData = {
       email: email,
       password: password,
-    });
+    };
 
     const header = {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -75,6 +75,8 @@ function Login() {
     setClientid(clientid);
 
     alert("로그인 성공");
+
+    // router.push("/count");
   };
 
   return (
