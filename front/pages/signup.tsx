@@ -123,8 +123,7 @@ function SignUp() {
                   className="input input-bordered"
                   onChange={onEmailChange}
                 />
-              </div>
-              <div className="form-control">
+                \
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
@@ -140,8 +139,6 @@ function SignUp() {
                   Forgot password?
                 </a>
               </label> */}
-              </div>
-              <div className="form-control">
                 <label className="label">
                   <span className="label-text">Gender</span>
                 </label>
@@ -152,8 +149,6 @@ function SignUp() {
                   className="input input-bordered"
                   onChange={onGenderChange}
                 />
-              </div>
-              <div className="form-control">
                 <label className="label">
                   <span className="label-text">DateOfBirth</span>
                 </label>
@@ -163,6 +158,7 @@ function SignUp() {
                   className="input input-bordered"
                   onChange={onBirthChange}
                 />
+                <input type="submit"></input>
               </div>
 
               {/* <div className="form-control">
