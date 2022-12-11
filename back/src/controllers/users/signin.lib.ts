@@ -37,11 +37,14 @@ export async function signinController(ctx: Context) {
 
     Logger.info('[USER_SIGNIN] encoded Password: %o', encodedPassword);
 
-    const result = await Mysql.query<ClientInfo>(selectToken, [parsedEmail, encodedPassword]);
+    const { token: queryToken, clientid: queryClientId } = await Mysql.query<ClientInfo>(selectToken, [
+      parsedEmail,
+      encodedPassword,
+    ]);
 
-    Logger.info('[USER_SIGNIN] queried data: %o', { email: result.email, password: result.password });
+    Logger.info('[USER_SIGNIN] queried data: %o', { queryToken, queryClientId });
 
-    if (!result) {
+    if (!queryToken || !queryClientId) {
       setErrorResponse(ctx, 400, 'Login Failed');
     }
 
@@ -49,10 +52,10 @@ export async function signinController(ctx: Context) {
 
     Logger.info('[USER_SIGNIN] Login Success');
 
-    const { token, clientid } = result;
+    // const { token, clientid } = result;
 
     // 회원 정보 조회 성공 시 토큰과 클라이언트 아이디 값을 리턴
-    setResponse(ctx, 200, { token, clientid });
+    setResponse(ctx, 200, { queryToken, queryClientId });
   } catch (error) {
     setErrorResponse(ctx, 500, JSON.stringify(error));
   }
