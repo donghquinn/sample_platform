@@ -11,7 +11,7 @@ export async function adminController(ctx: AdminRegisterCtx) {
   try {
     Logger.info('[REGISTER] Got Request. Validate Start');
 
-    Logger.info('REGISTER ctx data: %o', ctx.data);
+    Logger.info('REGISTER ctx data: %o', ctx.request.body);
 
     const parsed = ctx.request.body;
 

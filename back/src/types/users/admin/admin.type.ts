@@ -26,8 +26,12 @@ export interface AdminSignin {
   password: string;
 }
 
-export interface AdminRegisterCtx extends Context {
+export interface AdminRequestBodyData {
   body: AdminRequestData;
+}
+
+export interface AdminRegisterCtx extends Context {
+  data: AdminRequestData;
 }
 
 export interface AdminRequestData {
