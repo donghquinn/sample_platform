@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 import { Context } from 'koa';
 import { createToken } from 'libraries/createToken.lib';
 import { createUser } from 'libraries/users/create-user.lib';
-import { DefaultCtx } from 'types/request.types';
 import { Logger } from 'utils';
 import { setErrorResponse, setResponse } from 'utils/response.utils';
 import { adminRequestValidator } from 'validator/admin.validator';
