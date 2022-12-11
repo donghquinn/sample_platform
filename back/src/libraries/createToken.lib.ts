@@ -6,8 +6,8 @@ import { v4 } from 'uuid';
 export const createToken = () => {
   // const clientKey = randomInt(8);
 
-  const secretKey = randomInt(8);
-  const clientKey = randomInt(8);
+  const secretKey = Math.round(Math.random() * 100000000);
+  const clientKey = Math.round(Math.random() * 100000000);
 
   // const { clientid: clientKey } = await Mysql.query<ClientInfo>(selectAdminId, [email, password]);
 
