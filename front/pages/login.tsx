@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Logo from "../pulbic/img/logo.png";
+import Logo from "../public/img/logo.png";
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
