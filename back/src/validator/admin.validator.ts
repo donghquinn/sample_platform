@@ -3,5 +3,5 @@ import { AdminRegisterBody, AdminRegisterCtx } from 'types/users/admin/admin.typ
 
 export const adminRequestValidator = Joi.object<AdminRegisterCtx>({
   data: Joi.object<AdminRegisterBody>().required(),
-  headers: Joi.object().required(),
+  // headers: Joi.object().required(),
 }).options({ stripUnknown: true });
