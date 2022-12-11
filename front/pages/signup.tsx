@@ -1,9 +1,12 @@
 import axios, { AxiosError } from "axios";
 import { createHash, randomInt } from "crypto";
 import { useRouter } from "next/router";
+import Joi from "joi";
 import qs from "qs";
 import { useState } from "react";
 import { DefaultResponse } from "../src/type/jwt.type";
+import { RegisterForm } from "../src/type/register.type";
+import { useForm } from "react-hook-form";
 
 function SignUp() {
   const router = useRouter();
@@ -19,6 +22,15 @@ function SignUp() {
   const onGenderChange = (e) => setGender(e.target.value);
   const onBirthChange = (e) => setDateOfBirth(e.target.value);
   // const onAdminChnage = (e) => setAdmin(e.target.value);
+
+  const validateSignup = Joi.object<RegisterForm>({
+    email: Joi.string().required(),
+    password: Joi.string().required(),
+    gender: Joi.string().required(),
+    birth: Joi.string().required(),
+  });
+
+  const { register, handleSubmit, formState } = useForm();
 
   const signUpFunc = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
