@@ -8,3 +8,8 @@ export interface SignInResponse {
   token: string;
   clientid: string;
 }
+
+export interface SignInRequest {
+  email: string;
+  password: string;
+}

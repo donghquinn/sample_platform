@@ -1,5 +1,6 @@
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import axios, { AxiosError } from "axios";
+import Joi, { string } from "joi";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -13,7 +14,7 @@ import {
   passwordManage,
   tokenManage,
 } from "../src/libraries/recoil.lib";
-import { SignInRes } from "../src/type/sign.type";
+import { SignInRequest, SignInRes } from "../src/type/sign.type";
 
 function Login() {
   const router = useRouter();
@@ -28,6 +29,11 @@ function Login() {
   const onEmailChange = (e) => setEmail(e.target.value);
   const onPasswordChange = (e) => setPassword(e.target.value);
 
+  const validateSingin = Joi.object<SignInRequest>({
+    email: Joi.string().required(),
+    password: Joi.string().required(),
+  });
+
   const signInFunc = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -35,9 +41,12 @@ function Login() {
 
       console.log(`${url}/admin/signin`);
 
+      const { email: validatedEmail, password: validatedPassword } =
+        await validateSingin.validateAsync({ email, password });
+
       const bodyData = qs.stringify({
-        email,
-        password,
+        email: validatedEmail,
+        password: validatedPassword,
       });
 
       console.log("[SIGNIN] bodyData: %o", bodyData);
