@@ -30,7 +30,7 @@ function SignUp() {
     birth: Joi.string().required(),
   });
 
-  const { register, handleSubmit, formState } = useForm();
+  // const { register, handleSubmit, formState } = useForm();
 
   const signUpFunc = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -173,7 +173,7 @@ function SignUp() {
                   onChange={onBirthChange}
                   value={dateOfBirth}
                 />
-                <input type="submit"></input>
+                {/* <input type="submit"></input> */}
               </div>
 
               {/* <div className="form-control">

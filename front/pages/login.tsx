@@ -126,7 +126,7 @@ function Login() {
                   onChange={onPasswordChange}
                   value={password}
                 />
-                <input type="submit"></input>
+                {/* <input type="submit"></input> */}
               </div>
             </div>
 
