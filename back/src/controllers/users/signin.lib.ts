@@ -12,6 +12,8 @@ export async function signinController(ctx: Context) {
     // clientKey === clientid
     Logger.info('[USER_SIGNIN] Got Request. Validate start');
 
+    Logger.info('USERSIGNIN ctx: %o', ctx);
+    Logger.info('[USERSIGNIN] Body: %o', ctx.request.body);
     // const parsed = String(ctx.request.body);
 
     // const requestedEmail = parsed.split('&')[0];

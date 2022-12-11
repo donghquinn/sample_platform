@@ -11,6 +11,8 @@ export async function adminController(ctx: Context) {
   try {
     Logger.info('[REGISTER] Got Request. Validate Start');
 
+    Logger.info('REGISTER ctx: %o', ctx);
+    Logger.info('[REGISTER] body: %o', ctx.request.body);
     // const requestBody = String(ctx.request.body);
 
     // const requestedEmail = requestBody.split('&')[0];
