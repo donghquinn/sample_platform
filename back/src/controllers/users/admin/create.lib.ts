@@ -1,13 +1,13 @@
 import jwt from 'jsonwebtoken';
 import { createToken } from 'libraries/createToken.lib';
 import { createUser } from 'libraries/users/create-user.lib';
-import { AdminRegisterCtx } from 'types/users/admin/admin.type';
+import { AdminCtx } from 'types/users/admin/admin.type';
 import { Logger } from 'utils';
 import { setErrorResponse, setResponse } from 'utils/response.utils';
 import { adminRequestValidator } from 'validator/admin.validator';
 
 // admin 회원가입 요청
-export async function adminController(ctx: AdminRegisterCtx) {
+export async function adminController(ctx: AdminCtx) {
   try {
     Logger.info('[REGISTER] Got Request. Validate Start');
 
