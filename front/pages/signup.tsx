@@ -106,8 +106,8 @@ function SignUp() {
           <div className="card-body">
             <form
               className="mt-8 space-y-6"
-              // action="singInFunc"
-              // method="POST"
+              action="singInFunc"
+              method="POST"
               onSubmit={signUpFunc}
             >
               <div className="form-control">
