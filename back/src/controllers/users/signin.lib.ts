@@ -2,7 +2,7 @@ import { createHash } from 'crypto';
 import { Context } from 'koa';
 import { Mysql } from 'libraries/database';
 import { selectToken } from 'queries/users/client.sql';
-import { ClientInfo } from 'types/users/client.type';
+import { SignInQuery } from 'types/users/client.type';
 import { Logger } from 'utils';
 import { setErrorResponse, setResponse } from 'utils/response.utils';
 import { signinValidator } from 'validator/signin.validator';
@@ -37,7 +37,7 @@ export async function signinController(ctx: Context) {
 
     Logger.info('[USER_SIGNIN] encoded Password: %o', encodedPassword);
 
-    const { token: queryToken, clientid: queryClientId } = await Mysql.query<ClientInfo>(selectToken, [
+    const { token: queryToken, clientid: queryClientId } = await Mysql.query<SignInQuery>(selectToken, [
       parsedEmail,
       encodedPassword,
     ]);

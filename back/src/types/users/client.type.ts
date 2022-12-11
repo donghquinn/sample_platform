@@ -5,3 +5,8 @@ export interface ClientInfo {
   clientid: string;
   isAdmin: string;
 }
+
+export interface SignInQuery {
+  token: string;
+  clientid: string;
+}
