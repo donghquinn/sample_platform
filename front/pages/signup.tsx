@@ -43,7 +43,7 @@ function SignUp() {
       console.log(`${url}/admin/register`);
 
       // 패스워드와 합쳐서 인코딩할 값과 합칠 값
-      const passwordBase = randomInt(8);
+      const passwordBase = Math.round(Math.random() * 10);
 
       console.log("passwordBase: %o", passwordBase);
 
