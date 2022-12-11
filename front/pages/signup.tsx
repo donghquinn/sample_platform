@@ -34,84 +34,67 @@ function SignUp() {
   const signUpFunc = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      const url = process.env.NEXT_PUBLIC_ADMIN_URL;
+    const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
-      // 패스워드와 합쳐서 인코딩할 값과 합칠 값
-      const passwordBase = Math.round(Math.random() * 100000000);
+    // 패스워드와 합쳐서 인코딩할 값과 합칠 값
+    const passwordBase = Math.round(Math.random() * 100000000);
 
-      // 암호화
-      const endcodedPassword = createHash("sha256")
-        .update(password + `${passwordBase}`)
-        .digest("hex");
+    // 암호화
+    const endcodedPassword = createHash("sha256")
+      .update(password + `${passwordBase}`)
+      .digest("hex");
 
-      const header = {
-        "Content-Type": "application/x-www-form-urlencoded",
-      };
+    const header = {
+      "Content-Type": "application/x-www-form-urlencoded",
+    };
 
-      // const {
-      //   email: validatedEmail,
-      //   password: validatedPassword,
-      //   gender: validatedGender,
-      //   birth: validatedBirth,
-      // } = await validateSignup.validateAsync({
-      //   email,
-      //   endcodedPassword,
-      //   gender,
-      //   dateOfBirth,
-      // });
+    // const {
+    //   email: validatedEmail,
+    //   password: validatedPassword,
+    //   gender: validatedGender,
+    //   birth: validatedBirth,
+    // } = await validateSignup.validateAsync({
+    //   email,
+    //   endcodedPassword,
+    //   gender,
+    //   dateOfBirth,
+    // });
 
-      const bodyData = qs.stringify({
-        email,
-        password: endcodedPassword,
-        gender,
-        birth: dateOfBirth,
-        isAdmin: 1,
-      });
+    const bodyData = qs.stringify({
+      email,
+      password: endcodedPassword,
+      gender,
+      birth: dateOfBirth,
+      isAdmin: 1,
+    });
 
-      // console.log(`[Register] ${bodyData}`);
+    // console.log(`[Register] ${bodyData}`);
 
-      // 요청
-      const result = await axios.post<DefaultResponse>(
-        `${url}/admin/register`,
-        {
-          data: bodyData,
-          headers: header,
-        }
-      );
+    // 요청
+    const result = await axios.post<DefaultResponse>(`${url}/admin/register`, {
+      data: bodyData,
+      headers: header,
+    });
 
-      // if (result.data.resCode !== 200) {
-      //   alert("회원가입 실패!");
+    // if (result.data.resCode !== 200) {
+    //   alert("회원가입 실패!");
 
-      //   return;
-      // }
+    //   return;
+    // }
 
-      if (result.data.resCode !== 200) {
-        alert("회원가입 요청 응답 오류");
+    if (result.data.resCode !== 200) {
+      alert("회원가입 요청 응답 오류");
 
-        return;
-      }
-
-      // alert("회원가입 요청 완료");
-
-      // const { dataRes, resCode } = result.data;
-
-      // return { dataRes, resCode };
-
-      // console.log("sign up failed");
-    } catch (error) {
-      alert("회원가입 요청에 문제가 있습니다.");
-
-      if (axios.isAxiosError(error)) {
-        throw new AxiosError("[SIGNUP]", JSON.stringify(error));
-      }
-
-      if (error instanceof Error) {
-        throw new Error("[SIGNUP]", error);
-      }
-
-      throw new Error("[SIGNUP]", error);
+      return;
     }
+
+    // alert("회원가입 요청 완료");
+
+    // const { dataRes, resCode } = result.data;
+
+    // return { dataRes, resCode };
+
+    // console.log("sign up failed");
   };
 
   return (

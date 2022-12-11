@@ -36,51 +36,47 @@ function Login() {
 
   const signInFunc = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
-      // const { email: validatedEmail, password: validatedPassword } =
-      //   await validateSingin.validateAsync({ email, password });
+    const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
-      const bodyData = qs.stringify({
-        email: email,
-        password: password,
-      });
+    // const { email: validatedEmail, password: validatedPassword } =
+    //   await validateSingin.validateAsync({ email, password });
 
-      const header = {
-        "Content-Type": "application/x-www-form-urlencoded",
-        // Authorization: authToken,
-      };
+    const bodyData = qs.stringify({
+      email: email,
+      password: password,
+    });
 
-      const response = await axios.post<SignInRes>(`${url}/admin/signin`, {
-        data: bodyData,
-        headers: header,
-      });
+    const header = {
+      "Content-Type": "application/x-www-form-urlencoded",
+      // Authorization: authToken,
+    };
 
-      if (!response.data.dataRes.token || !response.data.dataRes.clientid) {
-        console.log("일치하는 회원정보를 찾지 못했습니다.");
+    const response = await axios.post<SignInRes>(`${url}/admin/signin`, {
+      data: bodyData,
+      headers: header,
+    });
 
-        return;
-      }
+    if (!response.data.dataRes.token || !response.data.dataRes.clientid) {
+      console.log("일치하는 회원정보를 찾지 못했습니다.");
 
-      if (response.data.resCode !== 200) {
-        console.log("Sign In Failed");
-
-        return;
-      }
-
-      const { token, clientid } = response.data.dataRes;
-
-      console.log("Found clientID: $o", clientid);
-
-      setToken(token);
-      setClientid(clientid);
-
-      return { token, clientid };
-    } catch (error) {
-      alert("다시 시도해 주세요");
-      throw new AxiosError("[Login]", JSON.stringify(error));
+      return;
     }
+
+    if (response.data.resCode !== 200) {
+      alert("로그인 실패");
+
+      return;
+    }
+
+    const { token, clientid } = response.data.dataRes;
+
+    console.log("Found clientID: $o", clientid);
+
+    setToken(token);
+    setClientid(clientid);
+
+    return { token, clientid };
   };
 
   return (
