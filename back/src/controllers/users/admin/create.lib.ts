@@ -44,7 +44,7 @@ export async function adminController(ctx: Context) {
 
     Logger.info('[REGISTER] validate start');
 
-    const { email, password, isAdmin, gender, birth } = await adminRequestValidator.validateAsync(ctx.request.body);
+    const { email, password, isAdmin, gender, birth } = await adminRequestValidator.validateAsync(parsed);
 
     const { uuid, hash, clientKey, secretKey } = createToken();
 
