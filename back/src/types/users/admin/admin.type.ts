@@ -1,4 +1,5 @@
 import { Context } from 'koa';
+import { SigninRequest } from '../signin.type';
 
 export type AdminCtx = AdminRegisterCtx | Context;
 export interface AdminRequest {
@@ -22,7 +23,7 @@ export interface AdminRegisterBody {
 }
 
 export interface AdminSigninCtx extends Context {
-  data: string;
+  data: SigninRequest;
 }
 
 export interface AdminRequestBodyData {
