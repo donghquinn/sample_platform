@@ -58,11 +58,23 @@ function SignUp() {
         "Content-Type": "application/x-www-form-urlencoded",
       };
 
-      const bodyData = qs.stringify({
+      const {
+        email: validatedEmail,
+        password: validatedPassword,
+        gender: validatedGender,
+        birth: validatedBirth,
+      } = await validateSignup.validateAsync({
         email,
-        password: endcodedPassword,
+        endcodedPassword,
         gender,
-        birth: dateOfBirth,
+        dateOfBirth,
+      });
+
+      const bodyData = qs.stringify({
+        email: validatedEmail,
+        password: validatedPassword,
+        gender: validatedGender,
+        birth: validatedBirth,
         isAdmin: 1,
       });
 
