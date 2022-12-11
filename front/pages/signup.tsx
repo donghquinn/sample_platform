@@ -26,7 +26,7 @@ function SignUp() {
 
       const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
-      // console.log(`${url}/admin/register`);
+      console.log(`${url}/admin/register`);
 
       // 패스워드와 합쳐서 인코딩할 값과 합칠 값
       const passwordBase = randomInt(8);
