@@ -29,7 +29,8 @@ function Login() {
   const onEmailChange = (e) => setEmail(e.target.value);
   const onPasswordChange = (e) => setPassword(e.target.value);
 
-  const signInFunc = async () => {
+  const signInFunc = async (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
       const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 

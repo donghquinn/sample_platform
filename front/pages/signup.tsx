@@ -20,7 +20,9 @@ function SignUp() {
   const onBirthChange = (e) => setDateOfBirth(e.target.value);
   // const onAdminChnage = (e) => setAdmin(e.target.value);
 
-  const signUpFunc = async () => {
+  const signUpFunc = async (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     try {
       console.log("sign up start ");
 
