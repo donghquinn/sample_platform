@@ -3,7 +3,7 @@ import Jwt from 'jsonwebtoken';
 import { Context } from 'koa';
 
 // 일반 결과 요청
-export type DefaultCtx = AuthByKeyCtx | AuthByJwtContext;
+export type DefaultCtx = AuthByKeyCtx | AuthByJwtContext | Context;
 
 export interface AuthByKeyCtx extends Context {
   clientid: string;

@@ -10,6 +10,8 @@ import { signinValidator } from 'validator/signin.validator';
 export async function signinController(ctx: DefaultCtx) {
   try {
     // clientKey === clientid
+    Logger.info('[USER_SIGNIN] Got Request. Validate start');
+
     const { email, password } = await signinValidator.validateAsync(ctx.request.body);
 
     Logger.info('[USER_SIGNIN] Start Search User info...');
