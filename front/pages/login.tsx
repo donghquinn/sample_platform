@@ -11,8 +11,10 @@ import {
   tokenManage,
 } from "../src/libraries/recoil.lib";
 import { signIn } from "../src/libraries/signin";
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/router";
+import { SignInRes } from "../src/type/sign.type";
+import qs from "qs";
 
 function Login() {
   const router = useRouter();
@@ -27,23 +29,49 @@ function Login() {
   const onEmailChange = (e) => setEmail(e.target.value);
   const onPasswordChange = (e) => setPassword(e.target.value);
 
-  const signInFunc = async (event) => {
-    event.preventDefault();
-
+  const signInFunc = async () => {
     try {
-      const { token: receivedToken, clientid: receivedClientId } = await signIn(
+      const url = process.env.NEXT_PUBLIC_ADMIN_URL;
+
+      console.log(`${url}/admin/signin`);
+
+      const bodyData = qs.stringify({
         email,
-        password
-      );
+        password,
+      });
 
-      // if (!receivedClientId || !receivedToken) {
-      //   alert("일치하는 회원 정보가 없습니다.");
-      // }
+      console.log("[SIGNIN] bodyData: %o", bodyData);
 
-      setToken(receivedToken);
-      setClientid(receivedClientId);
+      const header = {
+        "Content-Type": "application/x-www-form-urlencoded",
+        // Authorization: authToken,
+      };
 
-      alert("로그인 되었습니다.");
+      const response = await axios.post<SignInRes>(`${url}/admin/signin`, {
+        data: bodyData,
+        headers: header,
+      });
+
+      if (!response.data.dataRes.token || !response.data.dataRes.clientid) {
+        console.log("일치하는 회원정보를 찾지 못했습니다.");
+
+        return;
+      }
+
+      if (response.data.resCode !== 200) {
+        console.log("Sign In Failed");
+
+        return;
+      }
+
+      const { token, clientid } = response.data.dataRes;
+
+      console.log("Found clientID: $o", clientid);
+
+      setToken(token);
+      setClientid(clientid);
+
+      return { token, clientid };
     } catch (error) {
       alert("다시 시도해 주세요");
       throw new AxiosError("[Login]", JSON.stringify(error));

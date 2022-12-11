@@ -1,7 +1,9 @@
 import axios, { AxiosError } from "axios";
+import { createHash, randomInt } from "crypto";
 import { useRouter } from "next/router";
+import qs from "qs";
 import { useState } from "react";
-import { signUp } from "../src/libraries/signup";
+import { DefaultResponse } from "../src/type/jwt.type";
 
 function SignUp() {
   const router = useRouter();
@@ -22,11 +24,66 @@ function SignUp() {
     try {
       console.log("sign up start ");
 
-      await signUp(email, password, gender, dateOfBirth);
+      const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
-      console.log("sign up failed");
+      // console.log(`${url}/admin/register`);
 
-      alert("회원가입 요청 완료");
+      // 패스워드와 합쳐서 인코딩할 값과 합칠 값
+      const passwordBase = randomInt(8);
+
+      console.log("passwordBase: %o", passwordBase);
+
+      // 암호화
+      const endcodedPassword = createHash("sha256")
+        .update(password + `${passwordBase}`)
+        .digest("hex");
+
+      console.log("encoded Password: %o", endcodedPassword);
+
+      const header = {
+        "Content-Type": "application/x-www-form-urlencoded",
+      };
+
+      const bodyData = qs.stringify({
+        email,
+        password: endcodedPassword,
+        gender,
+        birth: dateOfBirth,
+        isAdmin: 1,
+      });
+
+      console.log("bodyData: %o", bodyData);
+
+      // console.log(`[Register] ${bodyData}`);
+
+      // 요청
+      const result = await axios.post<DefaultResponse>(
+        `${url}/admin/register`,
+        {
+          data: bodyData,
+          headers: header,
+        }
+      );
+
+      // if (result.data.resCode !== 200) {
+      //   alert("회원가입 실패!");
+
+      //   return;
+      // }
+
+      if (result.data.resCode !== 200) {
+        alert("회원가입 요청 응답 오류");
+
+        return;
+      }
+
+      // alert("회원가입 요청 완료");
+
+      // const { dataRes, resCode } = result.data;
+
+      // return { dataRes, resCode };
+
+      // console.log("sign up failed");
     } catch (error) {
       alert("회원가입 요청에 문제가 있습니다.");
 
