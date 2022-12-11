@@ -35,23 +35,15 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      console.log("sign up start ");
-
       const url = process.env.NEXT_PUBLIC_ADMIN_URL;
-
-      console.log(`${url}/admin/register`);
 
       // 패스워드와 합쳐서 인코딩할 값과 합칠 값
       const passwordBase = Math.round(Math.random() * 100000000);
-
-      console.log("passwordBase: %o", passwordBase);
 
       // 암호화
       const endcodedPassword = createHash("sha256")
         .update(password + `${passwordBase}`)
         .digest("hex");
-
-      console.log("encoded Password: %o", endcodedPassword);
 
       const header = {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -76,8 +68,6 @@ function SignUp() {
         birth: validatedBirth,
         isAdmin: 1,
       });
-
-      console.log("bodyData: %o", bodyData);
 
       // console.log(`[Register] ${bodyData}`);
 

@@ -39,8 +39,6 @@ function Login() {
     try {
       const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
-      console.log(`${url}/admin/signin`);
-
       const { email: validatedEmail, password: validatedPassword } =
         await validateSingin.validateAsync({ email, password });
 
@@ -48,8 +46,6 @@ function Login() {
         email: validatedEmail,
         password: validatedPassword,
       });
-
-      console.log("[SIGNIN] bodyData: %o", bodyData);
 
       const header = {
         "Content-Type": "application/x-www-form-urlencoded",

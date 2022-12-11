@@ -12,7 +12,19 @@ export async function signinController(ctx: Context) {
     // clientKey === clientid
     Logger.info('[USER_SIGNIN] Got Request. Validate start');
 
-    const { email, password } = await signinValidator.validateAsync(ctx.request.body);
+    const parsed = String(ctx.request.body);
+
+    const requestedEmail = parsed.split('&')[0];
+    const requestedPassword = parsed.split('&')[1];
+
+    const requestedData = {
+      email: requestedEmail.split('=')[1],
+      password: requestedPassword.split('=')[1],
+    };
+
+    Logger.info('[USER_SIGNIN] Requested Data: %o', requestedData);
+
+    const { email, password } = await signinValidator.validateAsync(requestedData);
 
     Logger.info('[USER_SIGNIN] Start Search User info...');
 
