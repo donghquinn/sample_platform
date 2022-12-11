@@ -17,11 +17,15 @@ import { verifyAsync } from 'utils/jwt.util';
 // 요청 헤더에 담긴 JWT 를 이용해 유저 인증
 export default async function authByJwt(ctx: AuthByJwtContext, next: Next) {
   const authHeader = ctx.headers?.authorization;
+  const clientId = ctx.headers?.clientid;
+
   const token = canSplit(authHeader, 'Bearer ') ? authHeader?.split('Bearer ')[1] : '';
 
   try {
     // 토큰 자체가 있는지 먼저 체크
     if (!token) throw new AuthError('AUTH_NO_JWT_TOKEN_PROVIDED_ERROR', 'No auth token inside header.');
+
+    if (!clientId) throw new AuthError('AUTH_NO_CLIENT_ID_PROVIDED_ERROR', 'No Client Id inside header.');
 
     const { uuid, hash, id } = Jwt.decode(token) as Partial<AuthByJwtPayload>;
     const { request } = ctx;

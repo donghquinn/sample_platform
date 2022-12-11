@@ -24,7 +24,7 @@ function Count() {
     counting();
   });
 
-  if (!token || clientid) {
+  if (!token || !clientid) {
     return (
       <div>
         <div className="flex flex-col content-center">
