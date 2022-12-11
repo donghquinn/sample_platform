@@ -60,11 +60,14 @@ export async function adminController(ctx: AdminCtx) {
 
     Logger.info('[REGISTER] parsedBirth: %o', parsedBirth);
 
+    const parsedAdmin = data.split('&')[4];
+
     const parsedData = {
       email: parsedEmail.split('=')[1],
       password: parsedPassword.split('=')[1],
       gender: parsedGender.split('=')[1],
       birth: parsedBirth.split('=')[1],
+      isAdmin: parsedAdmin.split('=')[1],
     };
 
     Logger.info('[REGISTER] datas: %o', parsedData);
@@ -78,7 +81,15 @@ export async function adminController(ctx: AdminCtx) {
     const token = jwt.sign(payload, String(secretKey));
 
     // 유저 계정 생성
-    await createUser(email, password, token, clientKey, gender, birth, isAdmin);
+    await createUser(
+      parsedData.email,
+      parsedData.password,
+      token,
+      clientKey,
+      parsedData.gender,
+      parsedData.birth,
+      parsedData.isAdmin,
+    );
 
     setResponse(ctx, 200, 'SignUp Success');
   } catch (error) {
