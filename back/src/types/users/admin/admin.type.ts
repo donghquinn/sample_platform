@@ -21,9 +21,8 @@ export interface AdminRegisterBody {
   isAdmin: string;
 }
 
-export interface AdminSignin {
-  email: string;
-  password: string;
+export interface AdminSigninCtx extends Context {
+  data: string;
 }
 
 export interface AdminRequestBodyData {

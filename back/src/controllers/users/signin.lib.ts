@@ -12,7 +12,6 @@ export async function signinController(ctx: Context) {
     // clientKey === clientid
     Logger.info('[USER_SIGNIN] Got Request. Validate start');
 
-    Logger.info('USERSIGNIN ctx: %o', ctx);
     Logger.info('[USERSIGNIN] Body: %o', ctx.request.body);
     // const parsed = String(ctx.request.body);
 
@@ -26,11 +25,14 @@ export async function signinController(ctx: Context) {
 
     // Logger.info('[USER_SIGNIN] Requested Data: %o', requestedData);
 
-    const { email, password } = await signinValidator.validateAsync(ctx.request.body);
+    const { data } = await signinValidator.validateAsync(ctx.request.body);
+
+    const parsedEmail = data.split('&')[0].split('=')[1];
+    const parsedPassword = data.split('&')[1].split('=')[1];
 
     Logger.info('[USER_SIGNIN] Start Search User info...');
 
-    const result = await Mysql.query<ClientInfo>(selectToken, [email, password]);
+    const result = await Mysql.query<ClientInfo>(selectToken, [parsedEmail, parsedPassword]);
 
     Logger.info('[USER_SIGNIN] Found User Info');
 

@@ -13,55 +13,20 @@ export async function adminController(ctx: AdminCtx) {
 
     Logger.info('REGISTER ctx data: %o', ctx.request.body);
 
-    // const requestedEmail = requestBody.split('&')[0];
-
-    // Logger.info('[REGISTER] eamil: %o', requestedEmail);
-
-    // const requestPassword = requestBody.split('&')[1];
-
-    // Logger.info('[REGISTER] password: %o', requestPassword);
-
-    // const requestGender = requestBody.split('&')[2];
-
-    // Logger.info('[REGISTER] gender: %o', requestGender);
-
-    // const requestBirth = requestBody.split('&')[3];
-
-    // Logger.info('[REGISTER] birth: %o', requestBirth);
-
-    // const parsed = {
-    //   email: requestedEmail.split('=')[1],
-    //   password: requestPassword.split('=')[1],
-    //   gender: requestGender.split('=')[1],
-    //   birth: requestBirth.split('=')[1],
-    // };
-
-    // Logger.info('[REGISTER] Got Request: %o', parsed);
-
-    // Logger.info('[REGISTER] validate start');
-
+    // validate의 데이터 값은 문자열
     const { data } = await adminRequestValidator.validateAsync(ctx.request.body);
-
-    Logger.info('[REGISTER] Validated: %o', data);
 
     const parsedEmail = data.split('&')[0];
 
-    Logger.info('[REGISTER] parsedEmail: %o', parsedEmail);
-
     const parsedPassword = data.split('&')[1];
-
-    Logger.info('[REGISTER] parsedPassword: %o', parsedPassword);
 
     const parsedGender = data.split('&')[2];
 
-    Logger.info('[REGISTER] parsedGender: %o', parsedGender);
-
     const parsedBirth = data.split('&')[3];
-
-    Logger.info('[REGISTER] parsedBirth: %o', parsedBirth);
 
     const parsedAdmin = data.split('&')[4];
 
+    // 파싱한 데이터
     const parsedData = {
       email: parsedEmail.split('=')[1],
       password: parsedPassword.split('=')[1],
@@ -70,14 +35,11 @@ export async function adminController(ctx: AdminCtx) {
       isAdmin: parsedAdmin.split('=')[1],
     };
 
-    Logger.info('[REGISTER] datas: %o', parsedData);
-
     const { uuid, hash, clientKey, secretKey } = createToken();
-
-    Logger.info('[REGISTER] Got Request ClientId: %o', clientKey);
 
     const payload = { uuid, hash, clientKey };
 
+    // 토큰 생성
     const token = jwt.sign(payload, String(secretKey));
 
     // 유저 계정 생성
