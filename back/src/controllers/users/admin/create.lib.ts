@@ -13,10 +13,6 @@ export async function adminController(ctx: AdminCtx) {
 
     Logger.info('REGISTER ctx data: %o', ctx.request.body);
 
-    const parsed = ctx.request.body;
-
-    Logger.info(parsed);
-
     // const requestedEmail = requestBody.split('&')[0];
 
     // Logger.info('[REGISTER] eamil: %o', requestedEmail);
@@ -44,11 +40,34 @@ export async function adminController(ctx: AdminCtx) {
 
     // Logger.info('[REGISTER] validate start');
 
-    const { data } = await adminRequestValidator.validateAsync(parsed);
+    const { data } = await adminRequestValidator.validateAsync(ctx.request.body);
 
-    const { email, password, gender, birth, isAdmin } = data;
+    Logger.info('[REGISTER] Validated: %o', data);
 
-    Logger.info('[REGISTER] datas: %o', { email, password, gender, birth, isAdmin });
+    const parsedEmail = data.split('&')[0];
+
+    Logger.info('[REGISTER] parsedEmail: %o', parsedEmail);
+
+    const parsedPassword = data.split('&')[1];
+
+    Logger.info('[REGISTER] parsedPassword: %o', parsedPassword);
+
+    const parsedGender = data.split('&')[2];
+
+    Logger.info('[REGISTER] parsedGender: %o', parsedGender);
+
+    const parsedBirth = data.split('&')[3];
+
+    Logger.info('[REGISTER] parsedBirth: %o', parsedBirth);
+
+    const parsedData = {
+      email: parsedEmail.split('=')[1],
+      password: parsedPassword.split('=')[1],
+      gender: parsedGender.split('=')[1],
+      birth: parsedBirth.split('=')[1],
+    };
+
+    Logger.info('[REGISTER] datas: %o', parsedData);
 
     const { uuid, hash, clientKey, secretKey } = createToken();
 
