@@ -1,13 +1,13 @@
+import { Context } from 'koa';
 import { Mysql } from 'libraries/database';
 import { selectToken } from 'queries/users/client.sql';
-import { DefaultCtx } from 'types/request.types';
 import { ClientInfo } from 'types/users/client.type';
 import { Logger } from 'utils';
 import { setErrorResponse, setResponse } from 'utils/response.utils';
 import { signinValidator } from 'validator/signin.validator';
 
 // body에 담긴 패스워드는 프론트단에서 인코딩 시켜 요청
-export async function signinController(ctx: DefaultCtx) {
+export async function signinController(ctx: Context) {
   try {
     // clientKey === clientid
     Logger.info('[USER_SIGNIN] Got Request. Validate start');

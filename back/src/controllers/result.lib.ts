@@ -1,13 +1,13 @@
 import { AuthError, MysqlError } from 'error';
+import { Context } from 'koa';
 import { getClientKey } from 'libraries';
-import { DefaultCtx } from 'types/request.types';
 import { Logger } from 'utils';
 import { setErrorResponse, setResponse } from 'utils/response.utils';
 import { defaultRequestValidator } from 'validator/default-request.validator';
 import { calculateType } from '../libraries/calculate/result/type-calculate.lib';
 
 // 입맛 유형 라우터 타고 들어와 제일 처음 마주하는 곳
-export async function firstResult(ctx: DefaultCtx) {
+export async function firstResult(ctx: Context) {
   try {
     const headerKey = ctx.request.headers?.key;
 

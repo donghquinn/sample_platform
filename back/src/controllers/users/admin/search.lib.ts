@@ -1,9 +1,9 @@
+import { Context } from 'koa';
 import { searchUserCount } from 'libraries/users/user-count.lib';
-import { DefaultCtx } from 'types/request.types';
 import { Logger } from 'utils';
 import { setErrorResponse, setResponse } from 'utils/response.utils';
 
-export async function searchTotalUsers(ctx: DefaultCtx) {
+export async function searchTotalUsers(ctx: Context) {
   try {
     const count = await searchUserCount();
 

@@ -1,12 +1,12 @@
+import { adminController } from 'controllers/users/admin/create.lib';
+import { searchTotalUsers } from 'controllers/users/admin/search.lib';
+import { signinController } from 'controllers/users/signin.lib';
 import { DefaultState, Next } from 'koa';
 import Router from 'koa-router';
-import { adminController } from 'controllers/users/admin/create.lib';
-import { signinController } from 'controllers/users/signin.lib';
-import { DefaultCtx } from 'types/request.types';
 import authByJwt from 'middlewares/auth-jwt';
-import { searchTotalUsers } from 'controllers/users/admin/search.lib';
+import { Context } from 'vm';
 
-const adminRouter = new Router<DefaultState, DefaultCtx>();
+const adminRouter = new Router<DefaultState, Context>();
 
 adminRouter.post('/register', async (ctx, next: Next) => {
   await adminController(ctx);
