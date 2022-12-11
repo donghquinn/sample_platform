@@ -107,9 +107,9 @@ function SignUp() {
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
             <form
-              className="mt-8 space-y-6"
-              action="singInFunc"
-              method="POST"
+              // className="mt-8 space-y-6"
+              // action="singInFunc"
+              // method="POST"
               onSubmit={signUpFunc}
             >
               <div className="form-control">
@@ -122,6 +122,7 @@ function SignUp() {
                   required
                   className="input input-bordered"
                   onChange={onEmailChange}
+                  value={email}
                 />
                 <label className="label">
                   <span className="label-text">Password</span>
@@ -132,6 +133,7 @@ function SignUp() {
                   required
                   className="input input-bordered"
                   onChange={onPasswordChange}
+                  value={password}
                 />
                 {/* <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
@@ -147,6 +149,7 @@ function SignUp() {
                   required
                   className="input input-bordered"
                   onChange={onGenderChange}
+                  value={gender}
                 />
                 <label className="label">
                   <span className="label-text">DateOfBirth</span>
@@ -156,6 +159,7 @@ function SignUp() {
                   placeholder="YYMMDD"
                   className="input input-bordered"
                   onChange={onBirthChange}
+                  value={dateOfBirth}
                 />
                 <input type="submit"></input>
               </div>

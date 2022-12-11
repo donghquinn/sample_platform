@@ -90,7 +90,7 @@ function Login() {
             </h2>
           </div>
           <form
-            className="mt-8 space-y-6"
+            // className="mt-8 space-y-6"
             // action="singInFunc"
             // method="POST"
             onSubmit={signInFunc}
@@ -110,9 +110,9 @@ function Login() {
                   className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Email address"
                   onChange={onEmailChange}
+                  value={email}
                 />
-              </div>
-              <div>
+
                 <label htmlFor="password" className="sr-only">
                   Password
                 </label>
@@ -125,7 +125,9 @@ function Login() {
                   className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Password"
                   onChange={onPasswordChange}
+                  value={password}
                 />
+                <input type="submit"></input>
               </div>
             </div>
 
