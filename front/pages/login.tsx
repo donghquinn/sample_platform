@@ -71,12 +71,10 @@ function Login() {
 
     const { token, clientid } = response.data.dataRes;
 
-    console.log("Found clientID: $o", clientid);
-
     setToken(token);
     setClientid(clientid);
 
-    return { token, clientid };
+    alert("로그인 성공");
   };
 
   return (

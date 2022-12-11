@@ -88,7 +88,7 @@ function SignUp() {
       return;
     }
 
-    // alert("회원가입 요청 완료");
+    alert("회원가입 요청 완료");
 
     // const { dataRes, resCode } = result.data;
 
