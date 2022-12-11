@@ -123,7 +123,6 @@ function SignUp() {
                   className="input input-bordered"
                   onChange={onEmailChange}
                 />
-                \
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
