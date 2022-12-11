@@ -4,7 +4,7 @@ import { Sql } from 'types';
 export const insertAdminUser: Sql = `
   INSERT INTO 
     ${process.env.ADMIN}
-    (email, password, token, clientid, gender, birth, isAdmin)
+    (email, password, token, clientid, gender, birth, is_admin)
   VALUES
     (?, ?, ?, ?, ?, ?, ?)
 `;
