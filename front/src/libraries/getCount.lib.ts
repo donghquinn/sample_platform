@@ -13,7 +13,7 @@ export async function getCount(token: string, clientid: string) {
       // clientid,
     };
 
-    const response = await axios.get<CountRes>(`${url}/count`, {
+    const response = await axios.get<CountRes>(`${url}/admin/count`, {
       headers: header,
     });
 

@@ -1,12 +1,11 @@
 import axios, { AxiosError } from "axios";
-import { createHash, randomInt } from "crypto";
-import { useRouter } from "next/router";
+import { createHash } from "crypto";
 import Joi from "joi";
+import { useRouter } from "next/router";
 import qs from "qs";
 import { useState } from "react";
 import { DefaultResponse } from "../src/type/jwt.type";
 import { RegisterForm } from "../src/type/register.type";
-import { useForm } from "react-hook-form";
 
 function SignUp() {
   const router = useRouter();
