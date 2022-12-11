@@ -1,7 +1,7 @@
 import Joi from 'joi';
-import { AdminRequest } from 'types/users/admin/admin.type';
+import { AdminRegisterBody } from 'types/users/admin/admin.type';
 
-export const adminRequestValidator = Joi.object<AdminRequest>({
+export const adminRequestValidator = Joi.object<AdminRegisterBody>({
   email: Joi.string().required(),
   password: Joi.string().required(),
   isAdmin: Joi.string().required(),

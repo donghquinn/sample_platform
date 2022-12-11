@@ -1,21 +1,21 @@
 import jwt from 'jsonwebtoken';
-import { Context } from 'koa';
 import { createToken } from 'libraries/createToken.lib';
 import { createUser } from 'libraries/users/create-user.lib';
+import { AdminRegisterCtx } from 'types/users/admin/admin.type';
 import { Logger } from 'utils';
 import { setErrorResponse, setResponse } from 'utils/response.utils';
 import { adminRequestValidator } from 'validator/admin.validator';
 
 // admin 회원가입 요청
-export async function adminController(ctx: Context) {
+export async function adminController(ctx: AdminRegisterCtx) {
   try {
     Logger.info('[REGISTER] Got Request. Validate Start');
 
-    Logger.info('REGISTER ctx: %o', ctx);
+    Logger.info('REGISTER ctx data: %o', ctx.data);
 
-    const requestBody = ctx.request.body;
+    const parsed = ctx.request.body;
 
-    Logger.info('[REGISTER] body: %o', requestBody);
+    Logger.info('[REGISTER] body: %o', parsed);
 
     // const requestedEmail = requestBody.split('&')[0];
 
@@ -44,8 +44,10 @@ export async function adminController(ctx: Context) {
 
     // Logger.info('[REGISTER] validate start');
 
-    const { email, password, isAdmin, gender, birth } = await adminRequestValidator.validateAsync(requestBody);
-    Logger.info('[REGISTER] datas: %o', { email, password, gender, birth });
+    const { email, password, gender, birth, isAdmin } = await adminRequestValidator.validateAsync(parsed);
+
+    Logger.info('[REGISTER] datas: %o', { email, password, gender, birth, isAdmin });
+
     const { uuid, hash, clientKey, secretKey } = createToken();
 
     Logger.info('[REGISTER] Got Request ClientId: %o', clientKey);

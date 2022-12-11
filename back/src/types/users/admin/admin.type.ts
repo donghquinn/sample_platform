@@ -1,5 +1,6 @@
 import { Context } from 'koa';
 
+export type AdminCtx = AdminRegisterCtx | Context;
 export interface AdminRequest {
   email: string;
   password: string;
@@ -17,6 +18,7 @@ export interface AdminRegisterBody {
   password: string;
   gender: string;
   birth: string;
+  isAdmin: string;
 }
 
 export interface AdminSignin {
@@ -25,5 +27,9 @@ export interface AdminSignin {
 }
 
 export interface AdminRegisterCtx extends Context {
-  body: AdminRegisterBody;
+  body: AdminRequestData;
+}
+
+export interface AdminRequestData {
+  data: AdminRegisterBody;
 }

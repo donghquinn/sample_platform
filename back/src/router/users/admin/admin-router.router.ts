@@ -4,9 +4,9 @@ import { signinController } from 'controllers/users/signin.lib';
 import { DefaultState, Next } from 'koa';
 import Router from 'koa-router';
 import authByJwt from 'middlewares/auth-jwt';
-import { Context } from 'vm';
+import { AdminCtx } from 'types/users/admin/admin.type';
 
-const adminRouter = new Router<DefaultState, Context>();
+const adminRouter = new Router<DefaultState, AdminCtx>();
 
 adminRouter.post('/register', async (ctx, next: Next) => {
   await adminController(ctx);
