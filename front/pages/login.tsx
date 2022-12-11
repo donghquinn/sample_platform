@@ -29,22 +29,22 @@ function Login() {
   const onEmailChange = (e) => setEmail(e.target.value);
   const onPasswordChange = (e) => setPassword(e.target.value);
 
-  const validateSingin = Joi.object<SignInRequest>({
-    email: Joi.string().required(),
-    password: Joi.string().required(),
-  });
+  // const validateSingin = Joi.object<SignInRequest>({
+  //   email: Joi.string().required(),
+  //   password: Joi.string().required(),
+  // });
 
   const signInFunc = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
-      const { email: validatedEmail, password: validatedPassword } =
-        await validateSingin.validateAsync({ email, password });
+      // const { email: validatedEmail, password: validatedPassword } =
+      //   await validateSingin.validateAsync({ email, password });
 
       const bodyData = qs.stringify({
-        email: validatedEmail,
-        password: validatedPassword,
+        email: email,
+        password: password,
       });
 
       const header = {

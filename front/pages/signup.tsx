@@ -22,12 +22,12 @@ function SignUp() {
   const onBirthChange = (e) => setDateOfBirth(e.target.value);
   // const onAdminChnage = (e) => setAdmin(e.target.value);
 
-  const validateSignup = Joi.object<RegisterForm>({
-    email: Joi.string().required(),
-    password: Joi.string().required(),
-    gender: Joi.string().required(),
-    birth: Joi.string().required(),
-  });
+  // const validateSignup = Joi.object<RegisterForm>({
+  //   email: Joi.string().required(),
+  //   password: Joi.string().required(),
+  //   gender: Joi.string().required(),
+  //   birth: Joi.string().required(),
+  // });
 
   // const { register, handleSubmit, formState } = useForm();
 
@@ -49,23 +49,23 @@ function SignUp() {
         "Content-Type": "application/x-www-form-urlencoded",
       };
 
-      const {
-        email: validatedEmail,
-        password: validatedPassword,
-        gender: validatedGender,
-        birth: validatedBirth,
-      } = await validateSignup.validateAsync({
-        email,
-        endcodedPassword,
-        gender,
-        dateOfBirth,
-      });
+      // const {
+      //   email: validatedEmail,
+      //   password: validatedPassword,
+      //   gender: validatedGender,
+      //   birth: validatedBirth,
+      // } = await validateSignup.validateAsync({
+      //   email,
+      //   endcodedPassword,
+      //   gender,
+      //   dateOfBirth,
+      // });
 
       const bodyData = qs.stringify({
-        email: validatedEmail,
-        password: validatedPassword,
-        gender: validatedGender,
-        birth: validatedBirth,
+        email,
+        password: endcodedPassword,
+        gender,
+        birth: dateOfBirth,
         isAdmin: 1,
       });
 
