@@ -28,8 +28,8 @@ export async function signinController(ctx: Context) {
 
     const { data } = await signinValidator.validateAsync(ctx.request.body);
 
-    const parsedEmail = data.email.split('&')[0].split('=')[1];
-    const parsedPassword = data.password.split('&')[1].split('=')[1];
+    const parsedEmail = data.email;
+    const parsedPassword = data.password;
 
     Logger.info('[USER_SIGNIN] Start Search User info...');
 
