@@ -44,7 +44,9 @@ export async function adminController(ctx: AdminRegisterCtx) {
 
     // Logger.info('[REGISTER] validate start');
 
-    const { email, password, gender, birth, isAdmin } = await adminRequestValidator.validateAsync(parsed);
+    const { data } = await adminRequestValidator.validateAsync(parsed);
+
+    const { email, password, gender, birth, isAdmin } = data;
 
     Logger.info('[REGISTER] datas: %o', { email, password, gender, birth, isAdmin });
 
