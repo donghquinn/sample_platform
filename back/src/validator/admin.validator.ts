@@ -3,4 +3,5 @@ import { AdminRegisterBody, AdminRequestData } from 'types/users/admin/admin.typ
 
 export const adminRequestValidator = Joi.object<AdminRequestData>({
   data: Joi.object<AdminRegisterBody>().required(),
+  headers: Joi.object().required(),
 }).options({ stripUnknown: true });

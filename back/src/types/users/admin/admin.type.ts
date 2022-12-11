@@ -32,4 +32,5 @@ export interface AdminRegisterCtx extends Context {
 
 export interface AdminRequestData {
   data: AdminRegisterBody;
+  headers: object;
 }

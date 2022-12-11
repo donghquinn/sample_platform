@@ -15,7 +15,7 @@ export async function adminController(ctx: AdminRegisterCtx) {
 
     const parsed = ctx.request.body;
 
-    Logger.info('[REGISTER] body: %o', parsed);
+    Logger.info(parsed);
 
     // const requestedEmail = requestBody.split('&')[0];
 
