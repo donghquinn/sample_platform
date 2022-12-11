@@ -11,25 +11,25 @@ export async function adminController(ctx: Context) {
   try {
     Logger.info('[REGISTER] Got Request. Validate Start');
 
-    const requestBody = String(ctx.request.body);
+    // const requestBody = String(ctx.request.body);
 
-    const requestedEmail = requestBody.split('&')[0];
-    const requestPassword = requestBody.split('&')[1];
-    const requestGender = requestBody.split('&')[2];
-    const requestBirth = requestBody.split('&')[3];
+    // const requestedEmail = requestBody.split('&')[0];
+    // const requestPassword = requestBody.split('&')[1];
+    // const requestGender = requestBody.split('&')[2];
+    // const requestBirth = requestBody.split('&')[3];
 
-    const parsed = {
-      email: requestedEmail.split('=')[1],
-      password: requestPassword.split('=')[1],
-      gender: requestGender.split('=')[1],
-      birth: requestBirth.split('=')[1],
-    };
+    // const parsed = {
+    //   email: requestedEmail.split('=')[1],
+    //   password: requestPassword.split('=')[1],
+    //   gender: requestGender.split('=')[1],
+    //   birth: requestBirth.split('=')[1],
+    // };
 
-    Logger.info('[REGISTER] Got Request: %o', parsed);
+    // Logger.info('[REGISTER] Got Request: %o', parsed);
 
-    Logger.info('[REGISTER] validate start');
+    // Logger.info('[REGISTER] validate start');
 
-    const { email, password, isAdmin, gender, birth } = await adminRequestValidator.validateAsync(parsed);
+    const { email, password, isAdmin, gender, birth } = await adminRequestValidator.validateAsync(ctx.request.body);
 
     const { uuid, hash, clientKey, secretKey } = createToken();
 
