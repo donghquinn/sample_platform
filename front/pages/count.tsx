@@ -16,6 +16,9 @@ function Count() {
   const [clientid, setClientid] = useRecoilState(clientidManage);
 
   const counting = async () => {
+    console.log("token: %o", token);
+    console.log("clientId: %o", clientid);
+
     const count = await getCount(token, clientid);
 
     setCount(count);

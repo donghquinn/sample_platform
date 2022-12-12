@@ -8,7 +8,7 @@ export async function getCount(token: string, clientid: string) {
 
     // TODO header content-type: x-www-form-urlencoded로 바꿔야할지 지켜보자.
     const header = {
-      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
       Authorization: token,
       clientid: clientid,
       // clientid,
