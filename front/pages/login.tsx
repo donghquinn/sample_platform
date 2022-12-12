@@ -57,28 +57,14 @@ function Login() {
       headers: header,
     });
 
-    console.log(response.data.resCode);
-    console.log(response.data.dataRes);
-    // if (!response.data.dataRes.token || !response.data.dataRes.clientid) {
-    //   console.log("일치하는 회원정보를 찾지 못했습니다.");
-
-    //   return;
-    // }
-
-    // if (response.data.resCode !== 200) {
-    //   alert("로그인 실패");
-
-    //   return;
-    // }
-
     const { queryToken, queryClientId } = response.data.dataRes;
-
-    setToken(queryToken);
-    setClientid(queryClientId);
 
     alert("로그인 성공");
 
-    router.push("/count");
+    if (queryClientId && queryToken) {
+      router.push("/count");
+    }
+
     // router.push("/count");
   };
 
