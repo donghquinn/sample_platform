@@ -31,7 +31,7 @@ export interface AdminRequestBodyData {
 }
 
 export interface AdminRegisterCtx extends Context {
-  data: string;
+  data: AdminRegisterBody;
 }
 
 export interface AdminRequestData {

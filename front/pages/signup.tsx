@@ -36,8 +36,8 @@ function SignUp() {
 
     const url = process.env.NEXT_PUBLIC_ADMIN_URL;
 
-    // 패스워드와 합쳐서 인코딩할 값과 합칠 값
-    const passwordBase = Math.round(Math.random() * 100000000);
+    // // 패스워드와 합쳐서 인코딩할 값과 합칠 값
+    // const passwordBase = Math.round(Math.random() * 100000000);
 
     // 암호화
     const endcodedPassword = createHash("sha256")
@@ -48,18 +48,6 @@ function SignUp() {
       "Content-Type": "application/x-www-form-urlencoded",
     };
 
-    // const {
-    //   email: validatedEmail,
-    //   password: validatedPassword,
-    //   gender: validatedGender,
-    //   birth: validatedBirth,
-    // } = await validateSignup.validateAsync({
-    //   email,
-    //   endcodedPassword,
-    //   gender,
-    //   dateOfBirth,
-    // });
-
     const bodyData = {
       email,
       password: endcodedPassword,
@@ -68,19 +56,11 @@ function SignUp() {
       isAdmin: 1,
     };
 
-    // console.log(`[Register] ${bodyData}`);
-
     // 요청
     const result = await axios.post<DefaultResponse>(`${url}/admin/register`, {
       data: bodyData,
       headers: header,
     });
-
-    // if (result.data.resCode !== 200) {
-    //   alert("회원가입 실패!");
-
-    //   return;
-    // }
 
     if (result.data.resCode !== 200) {
       alert("회원가입 요청 응답 오류");
@@ -89,12 +69,6 @@ function SignUp() {
     }
 
     alert("회원가입 요청 완료");
-
-    // const { dataRes, resCode } = result.data;
-
-    // return { dataRes, resCode };
-
-    // console.log("sign up failed");
   };
 
   return (
