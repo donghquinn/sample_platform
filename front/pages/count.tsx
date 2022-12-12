@@ -21,6 +21,9 @@ function Count() {
   };
 
   useEffect(() => {
+    console.log(token);
+    console.log(clientid);
+
     counting();
   });
 
