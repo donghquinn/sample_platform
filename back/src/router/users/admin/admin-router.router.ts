@@ -3,7 +3,6 @@ import { searchTotalUsers } from 'controllers/users/admin/search.lib';
 import { signinController } from 'controllers/users/signin.lib';
 import { DefaultState, Next } from 'koa';
 import Router from 'koa-router';
-import authByJwt from 'middlewares/auth-jwt';
 import { AdminCtx } from 'types/users/admin/admin.type';
 
 const adminRouter = new Router<DefaultState, AdminCtx>();
@@ -20,7 +19,7 @@ adminRouter.post('/signin', async (ctx, next: Next) => {
   await next();
 });
 
-adminRouter.get('/count', authByJwt, async (ctx, next: Next) => {
+adminRouter.get('/count', async (ctx, next: Next) => {
   await searchTotalUsers(ctx);
 
   await next();
