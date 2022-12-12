@@ -7,6 +7,7 @@ import {
   countManage,
   tokenManage,
 } from "../src/libraries/recoil.lib";
+import Logout from "./logout";
 
 function Count() {
   const [count, setCount] = useRecoilState(countManage);
@@ -31,6 +32,7 @@ function Count() {
           <h1>총 유저 수: {count}</h1>
         </div>
       </div>
+      <Logout></Logout>
     </div>
   );
 }
