@@ -5,8 +5,8 @@ export interface SignInRes {
 }
 
 export interface SignInResponse {
-  token: string;
-  clientid: string;
+  queryToken: string;
+  queryClientId: string;
 }
 
 export interface SignInRequest {

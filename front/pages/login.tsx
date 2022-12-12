@@ -57,11 +57,11 @@ function Login() {
       headers: header,
     });
 
-    if (!response.data.dataRes.token || !response.data.dataRes.clientid) {
-      console.log("일치하는 회원정보를 찾지 못했습니다.");
+    // if (!response.data.dataRes.token || !response.data.dataRes.clientid) {
+    //   console.log("일치하는 회원정보를 찾지 못했습니다.");
 
-      return;
-    }
+    //   return;
+    // }
 
     if (response.data.resCode !== 200) {
       alert("로그인 실패");
@@ -69,13 +69,14 @@ function Login() {
       return;
     }
 
-    const { token, clientid } = response.data.dataRes;
+    const { queryToken, queryClientId } = response.data.dataRes;
 
-    setToken(token);
-    setClientid(clientid);
+    setToken(queryToken);
+    setClientid(queryClientId);
 
     alert("로그인 성공");
 
+    router.push("/count");
     // router.push("/count");
   };
 
@@ -173,7 +174,6 @@ function Login() {
                 style={{ backgroundColor: "#df5f3c" }}
                 onClick={() => {
                   signInFunc;
-                  router.push("/count");
                 }}
               >
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
