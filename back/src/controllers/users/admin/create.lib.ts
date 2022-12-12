@@ -17,31 +17,21 @@ export async function adminController(ctx: AdminCtx) {
     const { data } = await adminRequestValidator.validateAsync(ctx.request.body);
 
     const { email, password, gender, birth, isAdmin } = data;
-    // const parsedEmail = data.split('&')[0];
 
-    // const parsedPassword = data.split('&')[1];
-
-    // const parsedGender = data.split('&')[2];
-
-    // const parsedBirth = data.split('&')[3];
-
-    // const parsedAdmin = data.split('&')[4];
-
-    // // 파싱한 데이터
-    // const parsedData = {
-    //   email: parsedEmail.split('=')[1],
-    //   password: parsedPassword.split('=')[1],
-    //   gender: parsedGender.split('=')[1],
-    //   birth: parsedBirth.split('=')[1],
-    //   isAdmin: parsedAdmin.split('=')[1],
-    // };
+    Logger.info('[REGISTER] Create Token Start...');
 
     const { uuid, hash, clientKey, secretKey } = createToken();
 
+    Logger.info('[REGISTER] Token Created');
+
     const payload = { uuid, hash, clientKey };
+
+    Logger.info('[REGISTER] Create JWT Start...');
 
     // 토큰 생성
     const token = jwt.sign(payload, String(secretKey));
+
+    Logger.info('[REGISTER] JWT Created');
 
     // 유저 계정 생성
     await createUser(email, password, token, clientKey, gender, birth, isAdmin);

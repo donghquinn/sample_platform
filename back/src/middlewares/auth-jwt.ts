@@ -1,18 +1,18 @@
 import { createHash } from 'crypto';
 import { AuthError } from 'error';
+import Jwt from 'jsonwebtoken';
 import { Next } from 'koa';
 import { Mysql } from 'libraries/database/mysql.lib';
+import qs from 'qs';
 import { findToken } from 'queries/users/client.sql';
 import { AuthByJwtContext, AuthByJwtPayload } from 'types/request.types';
 import { ClientInfo } from 'types/users/client.type';
 import { Logger } from 'utils';
-import Jwt from 'jsonwebtoken';
+import { parseErrorMessage } from 'utils/error.util';
+import { verifyAsync } from 'utils/jwt.util';
 import { setErrorResponse } from 'utils/response.utils';
 import { canSplit } from 'utils/string.util';
 import { validate } from 'uuid';
-import { parseErrorMessage } from 'utils/error.util';
-import qs from 'qs';
-import { verifyAsync } from 'utils/jwt.util';
 
 // 요청 헤더에 담긴 JWT 를 이용해 유저 인증
 export default async function authByJwt(ctx: AuthByJwtContext, next: Next) {
@@ -35,6 +35,10 @@ export default async function authByJwt(ctx: AuthByJwtContext, next: Next) {
     // 토큰 내용 검증: id는 clientkey === clientid === id
     if (!uuid || !hash || !id) throw new AuthError('AUTH_PAYLOAD_INSUFFICIENT_ERROR', 'Insufficient token payload.');
     if (!validate(uuid)) throw new AuthError('AUTH_INCOMPATIBLE_UUID_FORMAT_ERROR', 'Incompatible uuid format.');
+
+    if (clientId !== id) {
+      throw new AuthError('AUTH_CLIENT_KEY_ERROR', 'Client Id does not match with client key');
+    }
 
     // DB에서 token 항목 조회
     const clientInfo = await Mysql.query<ClientInfo[]>(findToken, [id]);

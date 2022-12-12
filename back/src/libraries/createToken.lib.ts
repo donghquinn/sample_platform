@@ -4,9 +4,9 @@ import { v4 } from 'uuid';
 
 // jwt 생성
 export const createToken = () => {
-  // const clientKey = randomInt(8);
-
   const secretKey = Math.round(Math.random() * 100000000);
+
+  // clientkey는 clientid
   const clientKey = Math.round(Math.random() * 100000000);
 
   // const { clientid: clientKey } = await Mysql.query<ClientInfo>(selectAdminId, [email, password]);
