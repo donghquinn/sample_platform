@@ -1,10 +1,8 @@
 import { LockClosedIcon } from "@heroicons/react/20/solid";
-import axios, { AxiosError } from "axios";
-import Joi, { string } from "joi";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import qs from "qs";
 import React from "react";
 import { useRecoilState } from "recoil";
 import Logo from "../public/img/logo.png";
@@ -14,7 +12,7 @@ import {
   passwordManage,
   tokenManage,
 } from "../src/libraries/recoil.lib";
-import { SignInRequest, SignInRes } from "../src/type/sign.type";
+import { SignInRes } from "../src/type/sign.type";
 
 function Login() {
   const router = useRouter();
@@ -59,16 +57,19 @@ function Login() {
 
     const { queryToken, queryClientId } = response.data.dataRes;
 
+    console.log({ queryToken, queryClientId });
+
     setToken(queryToken);
     setClientid(queryClientId);
 
     alert("로그인 성공");
 
-    if (queryClientId && queryToken) {
+    if (queryClientId.length >= 2 && queryToken.length >= 2) {
       router.push("/count");
+    } else {
+      alert("로그인 실패");
+      router.push("/");
     }
-
-    // router.push("/count");
   };
 
   return (

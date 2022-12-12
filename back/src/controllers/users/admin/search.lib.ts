@@ -17,6 +17,8 @@ export async function searchTotalUsers(ctx: AdminCtx) {
 
     const token = canSplit(authHeader, 'Bearer ') ? authHeader?.split('Bearer ')[1] : '';
 
+    Logger.info('[GET COUNT] Got token');
+
     const { clientid: clientKey } = await Mysql.query<TokenAuthorize>(selectClientIdByToken, [token]);
 
     if (clientKey === undefined || !clientKey) {
