@@ -6,16 +6,15 @@ import { AdminCtx } from 'types/users/admin/admin.type';
 import { TokenAuthorize } from 'types/users/client.type';
 import { Logger } from 'utils';
 import { setErrorResponse, setResponse } from 'utils/response.utils';
-import { canSplit } from 'utils/string.util';
 
 export async function searchTotalUsers(ctx: AdminCtx) {
   Logger.info('[GET COUNt] Found Count Request');
 
   try {
-    const authHeader = ctx.headers?.authorization;
+    const token = ctx.headers?.authorization;
     const clientId = ctx.headers?.clientid;
 
-    const token = canSplit(authHeader, 'Bearer ') ? authHeader?.split('Bearer ')[1] : '';
+    // const token = canSplit(authHeader, 'Bearer ') ? authHeader?.split('Bearer ')[1] : '';
 
     Logger.info('[GET COUNT] Got token');
 
