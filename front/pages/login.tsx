@@ -65,11 +65,11 @@ function Login() {
     //   return;
     // }
 
-    if (response.data.resCode !== 200) {
-      alert("로그인 실패");
+    // if (response.data.resCode !== 200) {
+    //   alert("로그인 실패");
 
-      return;
-    }
+    //   return;
+    // }
 
     const { queryToken, queryClientId } = response.data.dataRes;
 

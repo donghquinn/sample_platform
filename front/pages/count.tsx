@@ -24,15 +24,24 @@ function Count() {
     counting();
   });
 
-  if (!token || !clientid) {
+  if (
+    !token ||
+    !clientid ||
+    token === undefined ||
+    clientid === undefined ||
+    token.length <= 10 ||
+    clientid.length <= 8
+  ) {
     return (
       <div>
         <div className="flex flex-col content-center">
           <div className="flex justify-center">
             <h1>잘못된 접속 요청입니다.</h1>
-            <Link href="/">
-              <button>로그인하러가기</button>
-            </Link>
+            <div className="flex justify-center">
+              <Link href="/">
+                <button className="btn">로그인하러가기</button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
