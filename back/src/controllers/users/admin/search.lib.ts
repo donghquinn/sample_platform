@@ -9,9 +9,7 @@ import { setErrorResponse, setResponse } from 'utils/response.utils';
 import { canSplit } from 'utils/string.util';
 
 export async function searchTotalUsers(ctx: AdminCtx) {
-  Logger.info('[GET COUNt] Found Count Request: %o', ctx);
-
-  Logger.info('[GET COUNT] Headers: %o', ctx.headers);
+  Logger.info('[GET COUNt] Found Count Request');
 
   try {
     const authHeader = ctx.headers?.authorization;
