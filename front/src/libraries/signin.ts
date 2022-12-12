@@ -25,7 +25,10 @@ export async function signIn(email: string, password: string) {
       headers: header,
     });
 
-    if (!response.data.dataRes.token || !response.data.dataRes.clientid) {
+    if (
+      !response.data.dataRes.queryToken ||
+      !response.data.dataRes.queryClientId
+    ) {
       console.log("일치하는 회원정보를 찾지 못했습니다.");
 
       return;
@@ -37,11 +40,11 @@ export async function signIn(email: string, password: string) {
       return;
     }
 
-    const { token, clientid } = response.data.dataRes;
+    const { queryToken, queryClientId } = response.data.dataRes;
 
-    console.log("Found clientID: $o", clientid);
+    console.log("Found clientID: $o", queryClientId);
 
-    return { token, clientid };
+    return { queryToken, queryClientId };
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new AxiosError("[LOGIN] Axios Error", JSON.stringify(error));
