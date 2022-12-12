@@ -59,6 +59,9 @@ function Login() {
 
     const { queryToken, queryClientId } = response.data.dataRes;
 
+    setToken(queryToken);
+    setClientid(queryClientId);
+
     alert("로그인 성공");
 
     if (queryClientId && queryToken) {
