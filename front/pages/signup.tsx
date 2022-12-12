@@ -16,10 +16,29 @@ function SignUp() {
   const [dateOfBirth, setDateOfBirth] = useState("");
   // const [isAdmin, setAdmin] = useState("");
 
-  const onPasswordChange = (e) => setPassword(e.target.value);
-  const onEmailChange = (e) => setEmail(e.target.value);
-  const onGenderChange = (e) => setGender(e.target.value);
-  const onBirthChange = (e) => setDateOfBirth(e.target.value);
+  const onPasswordChange = (e) => {
+    e.preventDefault();
+
+    setPassword(e.target.value);
+  };
+
+  const onEmailChange = (e) => {
+    e.preventDefault();
+
+    setEmail(e.target.value);
+  };
+
+  const onGenderChange = (e) => {
+    e.preventDefault();
+
+    setGender(e.target.value);
+  };
+
+  const onBirthChange = (e) => {
+    e.preventDefault();
+
+    setDateOfBirth(e.target.value);
+  };
   // const onAdminChnage = (e) => setAdmin(e.target.value);
 
   // const validateSignup = Joi.object<RegisterForm>({

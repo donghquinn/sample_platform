@@ -37,10 +37,9 @@ export async function signinController(ctx: Context) {
 
     Logger.info('[USER_SIGNIN] encoded Password: %o', encodedPassword);
 
-    const { token: queryToken, clientid: queryClientId } = await Mysql.query<SignInQuery>(selectToken, [
-      parsedEmail,
-      encodedPassword,
-    ]);
+    const [result] = await Mysql.query<SignInQuery[]>(selectToken, [parsedEmail, encodedPassword]);
+
+    const { token: queryToken, clientid: queryClientId } = result;
 
     Logger.info('[USER_SIGNIN] queried data: %o', { queryToken, queryClientId });
 
