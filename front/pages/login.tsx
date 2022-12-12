@@ -57,6 +57,8 @@ function Login() {
       headers: header,
     });
 
+    console.log(response.data.resCode);
+    console.log(response.data.dataRes);
     // if (!response.data.dataRes.token || !response.data.dataRes.clientid) {
     //   console.log("일치하는 회원정보를 찾지 못했습니다.");
 
