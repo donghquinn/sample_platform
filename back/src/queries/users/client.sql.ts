@@ -21,6 +21,15 @@ export const selectAdminId: Sql = `
     password = ?
 `;
 
+export const selectClientIdByToken: Sql = `
+  SELECT 
+    clientid
+  FROM
+    ${process.env.ADMIN}
+  WHERE
+    token = ?
+`;
+
 export const selectToken: Sql = `
   SELECT
     token, clientid

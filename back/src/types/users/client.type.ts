@@ -10,3 +10,7 @@ export interface SignInQuery {
   token: string;
   clientid: string;
 }
+
+export interface TokenAuthorize {
+  clientid: string;
+}
