@@ -20,9 +20,12 @@ export async function searchTotalUsers(ctx: AdminCtx) {
       throw new AuthError('[GET COUNT]', 'No Token Provided');
     }
 
+    Logger.info('[GET COUNT] Got ClientId: %o', clientId);
     Logger.info('[GET COUNT] Got token: %o', token);
 
     const { clientid: clientKey } = await Mysql.query<TokenAuthorize>(selectClientIdByToken, [token]);
+
+    Logger.info('[GET COUNT] Found ClientId: %o', clientKey);
 
     if (clientKey === undefined || !clientKey) {
       throw new MysqlError('[GET COUNT]', 'MYSQL ERROR', 'No Match ClientKey Found');
