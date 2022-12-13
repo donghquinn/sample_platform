@@ -11,7 +11,7 @@ export async function adminController(ctx: AdminCtx) {
   try {
     Logger.info('[REGISTER] Got Request. Validate Start');
 
-    Logger.info('REGISTER ctx data: %o', ctx.request.body);
+    // Logger.info('REGISTER ctx data: %o', ctx.request.body);
 
     // validate의 데이터 값은 문자열
     const { data } = await adminRequestValidator.validateAsync(ctx.request.body);

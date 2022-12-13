@@ -58,11 +58,11 @@ function Login() {
       headers: header,
     });
 
-    console.log({ dataResponse: response.data });
+    // console.log({ dataResponse: response.data });
 
     const { queryToken, queryClientId } = response.data.dataRes;
 
-    console.log({ queryToken, queryClientId });
+    // console.log({ queryToken, queryClientId });
 
     if (queryClientId.length >= 2 && queryToken.length >= 2) {
       setToken(queryToken);
@@ -75,6 +75,13 @@ function Login() {
       router.push("/count");
     } else {
       alert("로그인 실패");
+
+      router.push("/");
+    }
+
+    if (response.data.resCode !== 200) {
+      alert("로그인 실패");
+
       router.push("/");
     }
   };

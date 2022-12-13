@@ -24,13 +24,13 @@ export async function signinController(ctx: Context) {
 
     const encodedPassword = createHash('sha256').update(parsedPassword).digest('hex');
 
-    Logger.info('[USER_SIGNIN] encoded Password: %o', encodedPassword);
+    Logger.info('[USER_SIGNIN] Password Cryptorize Finished');
 
     const [result] = await Mysql.query<SignInQuery[]>(selectToken, [parsedEmail, encodedPassword]);
 
     const { token: queryToken, clientid: queryClientId } = result;
 
-    Logger.info('[USER_SIGNIN] queried data: %o', { queryToken, queryClientId });
+    Logger.info('[USER_SIGNIN] Found Mathcing Data');
 
     if (!queryToken || !queryClientId) {
       setErrorResponse(ctx, 400, 'Login Failed');

@@ -17,8 +17,8 @@ function Count() {
   // const [login, setLogin] = useRecoilState(loginManage);
 
   const counting = async () => {
-    console.log("token: %o", token);
-    console.log("clientId: %o", clientid);
+    // console.log("token: %o", token);
+    // console.log("clientId: %o", clientid);
 
     const count = await getCount(token, clientid);
 

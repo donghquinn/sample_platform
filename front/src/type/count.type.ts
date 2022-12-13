@@ -1,9 +1,9 @@
 export interface CountRes {
   resCode: 200 | 500 | 400;
-  dataRes: CountResponse | null;
-  errMsg?: string | string[];
+  dataRes: string | null;
+  errMsg?: string | string[] | null;
 }
 
-export interface CountResponse {
-  count: string;
-}
+// export interface CountResponse {
+//   count: string;
+// }

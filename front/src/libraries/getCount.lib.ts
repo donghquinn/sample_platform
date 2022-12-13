@@ -26,7 +26,7 @@ export async function getCount(token: string, clientid: string) {
       return returnData;
     }
 
-    const { count } = response.data.dataRes;
+    const count = response.data.dataRes;
 
     console.log(count);
 
