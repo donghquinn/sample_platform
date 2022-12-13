@@ -26,16 +26,7 @@ function Logout() {
   return (
     <div>
       <div className="flex flex-col content-center">
-        <div className="flex justify-center">
-          <button
-            className="btn"
-            onClick={() => {
-              router.push("/");
-            }}
-          >
-            로그아웃
-          </button>
-        </div>
+        <div className="flex justify-center"></div>
       </div>
     </div>
   );

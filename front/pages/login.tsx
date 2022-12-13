@@ -57,6 +57,7 @@ function Login() {
       data: bodyData,
       headers: header,
     });
+    console.log({ data: response.data });
 
     const { queryToken, queryClientId } = response.data.dataRes;
 
