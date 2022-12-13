@@ -63,13 +63,13 @@ function Login() {
 
     console.log({ queryToken, queryClientId });
 
-    alert("로그인 성공");
-
     if (queryClientId.length >= 2 && queryToken.length >= 2) {
       setToken(queryToken);
       setClientid(queryClientId);
 
       setLogin(true);
+
+      alert("로그인 성공");
 
       router.push("/count");
     } else {
