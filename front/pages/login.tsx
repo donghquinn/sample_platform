@@ -79,11 +79,11 @@ function Login() {
       router.push("/");
     }
 
-    if (response.data.resCode !== 200) {
-      alert("로그인 실패");
+    // if (response.data.resCode !== 200) {
+    //   alert("로그인 실패");
 
-      router.push("/");
-    }
+    //   router.push("/");
+    // }
   };
 
   return (
