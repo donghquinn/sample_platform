@@ -56,7 +56,7 @@ export async function signUp(
     //   return;
     // }
 
-    console.log("response Code: %o", result.data.resCode);
+    // console.log("response Code: %o", result.data.resCode);
 
     const { dataRes, resCode } = result.data;
 
