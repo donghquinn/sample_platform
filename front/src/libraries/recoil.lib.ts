@@ -24,3 +24,8 @@ export const countManage = atom({
   key: "countManage",
   default: "",
 });
+
+export const loginManage = atom({
+  key: "loginManage",
+  default: false,
+});

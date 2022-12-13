@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
+import LogoutBtn from "../component/logout-btn";
 import { getCount } from "../src/libraries/getCount.lib";
 import {
   clientidManage,
   countManage,
+  loginManage,
   tokenManage,
 } from "../src/libraries/recoil.lib";
 import Logout from "./logout";
@@ -14,6 +16,7 @@ function Count() {
 
   const [token, setToken] = useRecoilState(tokenManage);
   const [clientid, setClientid] = useRecoilState(clientidManage);
+  const [login, setLogin] = useRecoilState(loginManage);
 
   const counting = async () => {
     console.log("token: %o", token);
@@ -35,7 +38,7 @@ function Count() {
           <h1>총 유저 수: {count}</h1>
         </div>
       </div>
-      <Logout></Logout>
+      <LogoutBtn></LogoutBtn>
     </div>
   );
 }

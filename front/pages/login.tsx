@@ -9,6 +9,7 @@ import Logo from "../public/img/logo.png";
 import {
   clientidManage,
   emailManage,
+  loginManage,
   passwordManage,
   tokenManage,
 } from "../src/libraries/recoil.lib";
@@ -22,6 +23,8 @@ function Login() {
 
   const [token, setToken] = useRecoilState(tokenManage);
   const [clientid, setClientid] = useRecoilState(clientidManage);
+
+  const [login, setLogin] = useRecoilState(loginManage);
 
   // 패스워드, 이메일 입력
   const onEmailChange = (e) => setEmail(e.target.value);
@@ -59,12 +62,14 @@ function Login() {
 
     console.log({ queryToken, queryClientId });
 
-    setToken(queryToken);
-    setClientid(queryClientId);
-
     alert("로그인 성공");
 
     if (queryClientId.length >= 2 && queryToken.length >= 2) {
+      setToken(queryToken);
+      setClientid(queryClientId);
+
+      setLogin(true);
+
       router.push("/count");
     } else {
       alert("로그인 실패");
