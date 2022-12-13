@@ -9,7 +9,9 @@ export async function searchUserCount() {
   try {
     Logger.info('[USER_COUNT] Get Count');
 
-    const { count } = await Mysql.query<UserCounts>(searchTotalUserCount);
+    const [totalCount] = await Mysql.query<UserCounts[]>(searchTotalUserCount);
+
+    const { count } = totalCount;
 
     Logger.info('[USER_COUNT] Got Total Count: %o', count);
 
