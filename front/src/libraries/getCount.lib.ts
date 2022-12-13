@@ -18,13 +18,13 @@ export async function getCount(token: string, clientid: string) {
       headers: header,
     });
 
-    if (response.data.resCode !== 200) {
-      const returnData = `Get Count Failed: ${response.data.resCode}`;
+    // if (response.data.resCode !== 200) {
+    //   const returnData = `Get Count Failed: ${response.data.resCode}`;
 
-      console.log(returnData);
+    //   console.log(returnData);
 
-      return returnData;
-    }
+    //   return returnData;
+    // }
 
     const count = response.data.dataRes;
 
